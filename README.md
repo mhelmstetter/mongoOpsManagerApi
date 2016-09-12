@@ -3,12 +3,16 @@ MongoDB Ops Manager API examples
 
 Installation
 ------------
+Download the python file(s) from github. The easiest way to install is with `curl`:
 
+```
+curl -OL https://raw.githubusercontent.com/mhelmstetter/mongoOpsManagerApi/master/opsManagerApi.py
+```
 
 Usage
 ------
 ```
-opsManagerApi.py [-h] --host HOST --group GROUP --username USERNAME
+python opsManagerApi.py [-h] --host HOST --group GROUP --username USERNAME
                         --apiKey APIKEY [--disableAlertConfigs]
                         [--enableAlertConfigs] [--alertHostname ALERTHOSTNAME]
                         [--printAlertConfigs]
