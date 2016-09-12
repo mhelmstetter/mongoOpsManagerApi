@@ -17,7 +17,7 @@ opsManagerApi.py [-h] --host HOST --group GROUP --username USERNAME
                       
 Examples
 ---------
-1. Disable alerts for host `host1.mydomain.com`:
+Disable alerts for host `host1.mydomain.com`:
 ```
 python opsManagerApi.py \
     --host http://opsmanager.mydomain.com:8080 \
@@ -28,7 +28,7 @@ python opsManagerApi.py \
     --alertHostname host1.mydomain.com
 ```
 
-1. Enable alerts for host `host1.mydomain.com`:
+Enable alerts for host `host1.mydomain.com`:
 ```
 python opsManagerApi.py \
     --host http://opsmanager.mydomain.com:8080 \
