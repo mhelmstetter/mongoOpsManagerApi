@@ -68,5 +68,15 @@ python opsManagerApi.py \
     --group 57d13b4be4b0b2a48ed49999 \
     --apiKey 11111111-7777-8888-9999-0000005e3db4 \
     --username user@mydomain.com \
-    --importAlertConfigs --alertConfigsInput yyy.json --continueOnError
+    --importAlertConfigs --alertConfigsInput myExport.json --continueOnError
+```
+
+Import alert configs into group from the input template, duplicating any host alerts for every host in the group:
+```
+python opsManagerApi.py \
+    --host http://opsmanager.mydomain.com:8080 \
+    --group 57d13b4be4b0b2a48ed49999 \
+    --apiKey 11111111-7777-8888-9999-0000005e3db4 \
+    --username user@mydomain.com \ 
+    --importAlertConfigsEveryHost --alertConfigsInput goldCopy.json --continueOnError
 ```
