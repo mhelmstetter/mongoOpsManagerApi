@@ -43,6 +43,17 @@ python opsManagerApi.py \
     --alertHostname host1.mydomain.com
 ```
 
+Export all alerts in group
+```
+python opsManagerApi.py \
+    --host http://opsmanager.mydomain.com:8080 \
+    --group 57d13b4be4b0b2a48ed49999 \
+    --apiKey 11111111-7777-8888-9999-0000005e3db4 \
+    --username user@mydomain.com \
+    --exportAlertConfigs 
+    --alertConfigsOutput myExport.json
+```
+
 Delete all alerts in group
 ```
 python opsManagerApi.py \
