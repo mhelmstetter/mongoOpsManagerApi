@@ -44,7 +44,7 @@ python opsManagerApi.py \
 ```
 
 Delete all alerts in group
-'''
+```
 python opsManagerApi.py \
     --host http://opsmanager.mydomain.com:8080 \
     --group 57d13b4be4b0b2a48ed49999 \
