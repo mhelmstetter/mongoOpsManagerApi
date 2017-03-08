@@ -14,6 +14,7 @@ usage: import.py [-h] --host HOST --group GROUP --username USERNAME --apiKey
 
 Arguments
 ---------
+```
 optional arguments:
   -h, --help            show this help message and exit
 
@@ -37,6 +38,7 @@ options:
   --rsUser RSUSER       MongoDB username to connect to replica set
   --rsPassword RSPASSWORD
                         MongoDB password to connect to replica set
+``
 
 
 Note that this script must be run from a host that has the replica set keyFile
