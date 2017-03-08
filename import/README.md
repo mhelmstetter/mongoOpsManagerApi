@@ -38,7 +38,7 @@ options:
   --rsUser RSUSER       MongoDB username to connect to replica set
   --rsPassword RSPASSWORD
                         MongoDB password to connect to replica set
-``
+```
 
 
 Note that this script must be run from a host that has the replica set keyFile
