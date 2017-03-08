@@ -239,7 +239,7 @@ enabled = { "enabled" : "true" }
 
 requests.packages.urllib3.disable_warnings()
 
-parser = argparse.ArgumentParser(description="Manage alerts from MongoDB Ops/Cloud Manager")
+parser = argparse.ArgumentParser(description="Import existing MongoDB clusters into Ops/Cloud Manager")
 
 requiredNamed = parser.add_argument_group('required arguments')
 requiredNamed.add_argument("--host"
@@ -268,21 +268,18 @@ optionsParser = parser.add_argument_group('options')
 optionsParser.add_argument("--rsName"
         ,help='Replica Set Name'
         ,required=False)
-optionsParser.add_argument("--rsHosts"
-        ,help='Comma separated list of replica set hosts. When importing only 1 replica host is needed.'
+optionsParser.add_argument("--rsHost"
+        ,help='Hostname of one replica member used as the import "seed"'
         ,required=False)
 optionsParser.add_argument("--rsPort"
-        ,help='MongoDB port number, only needed for import'
+        ,help='MongoDB port number'
         ,required=False
         ,default=27017)
 optionsParser.add_argument("--rsUser"
-        ,help='MongoDB username to connect to replica set for import'
+        ,help='MongoDB username to connect to replica set'
         ,required=False)
 optionsParser.add_argument("--rsPassword"
-        ,help='MongoDB password to connect to replica set for import'
-        ,required=False)
-optionsParser.add_argument("--rsKey"
-        ,help='MongoDB replica set keyfile contents (import only)'
+        ,help='MongoDB password to connect to replica set'
         ,required=False)
 
 args = parser.parse_args()
