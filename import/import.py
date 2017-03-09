@@ -4,6 +4,7 @@ import json
 import argparse
 import sys
 import copy
+import random
 from pymongo import MongoClient
 
 processTemplate = {
@@ -27,7 +28,7 @@ processTemplate = {
 }
 
 monitoringUser = {
-    "initPwd" : "cf2ac21046052a0f61215dd86d94b708",
+    "initPwd" : ''.join(random.choice('0123456789abcdef') for n in xrange(30)),
     "db": "admin",
     "user": "mms-monitoring-agent",
     "roles": [
@@ -39,7 +40,7 @@ monitoringUser = {
 }
 
 backupUser =  {
-    "initPwd": "b386182320b2c23a7adcbcee7840b1d1",
+    "initPwd": ''.join(random.choice('0123456789abcdef') for n in xrange(30)),
     "db": "admin",
     "user": "mms-backup-agent",
     "roles": [
@@ -68,10 +69,7 @@ backupUser =  {
 
 # TODO - how do we get the matching version of the monitoring agent to Ops Manager?
 monitoringVersion = {
-            "directoryUrl": None,
-            "hostname": "",
-            "baseUrl": None,
-            "name": "5.4.3.361"
+            "hostname": ""
         }
 
 
@@ -106,7 +104,7 @@ def importReplicaSet():
     new_config['auth']['disabled'] = False
     new_config['auth']['authoritativeSet'] = False
     new_config['auth']['autoUser'] = "mms-automation"
-    new_config['auth']['autoPwd'] = "b386182320b2c23a7aaabcee7840b1d1"
+    new_config['auth']['autoPwd'] = ''.join(random.choice('0123456789abcdef') for n in xrange(30))
 
     new_config['auth']['deploymentAuthMechanisms'] =  ["MONGODB-CR"]
 
