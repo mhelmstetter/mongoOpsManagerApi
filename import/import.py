@@ -91,6 +91,13 @@ def importReplicaSet():
     config = getAutomationConfig()
     new_config = copy.deepcopy(config)
 
+    # Somehow we end up with empty roles for monitoring and backup users
+    for index, user in enumerate(new_config['auth']['usersWanted']):
+        if user['user'] == "mms-monitoring-agent" and not user['roles']:
+            user['roles'] = monitoringUser['roles']
+        elif user['user'] == "mms-backup-agent" and not user['roles']:
+            user['roles'] = backupUser['roles']
+
     # if the monitoring user does not exist, add it
     if not any(x['user'] == "mms-monitoring-agent" for x in new_config['auth']['usersWanted']):
         print "*** adding monitoring user"
@@ -193,7 +200,7 @@ def importReplicaSet():
         #print(rsConfig)
         new_config['replicaSets'].append(rsConfig)
 
-    configStr = json.dumps(new_config, indent=4)
+    #configStr = json.dumps(new_config, indent=4)
     #print(configStr)
 
     __post_automation_config(new_config)
