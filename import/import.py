@@ -180,7 +180,8 @@ def importReplicaSet():
             process['name'] = args.rsName + "_" + str(process_id)
 
             process['args2_6'] = cmdLine
-            replSet = cmdLine['replication']['replSet']
+            #replSet = cmdLine['replication']['replSet']
+            replSet = rsConfig['_id']
             del process['args2_6']['replication']['replSet']
             process['args2_6']['replication']['replSetName'] = replSet
 
