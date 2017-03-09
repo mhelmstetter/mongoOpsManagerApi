@@ -104,7 +104,7 @@ def importReplicaSet():
     new_config['auth']['disabled'] = False
     new_config['auth']['authoritativeSet'] = False
     new_config['auth']['autoUser'] = "mms-automation"
-    new_config['auth']['autoPwd'] = ''.join(random.choice('0123456789abcdef') for n in xrange(30))
+    #new_config['auth']['autoPwd'] = ''.join(random.choice('0123456789abcdef') for n in xrange(30))
 
     new_config['auth']['deploymentAuthMechanisms'] =  ["MONGODB-CR"]
 
