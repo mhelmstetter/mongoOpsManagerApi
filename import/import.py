@@ -110,7 +110,7 @@ def importReplicaSet():
 
     new_config['auth']['deploymentAuthMechanisms'] =  ["MONGODB-CR"]
 
-    hosts = args.rsHosts.split(",")
+    hosts = args.rsHost.split(",")
 
     if not new_config['monitoringVersions']:
         print "*** adding monitoring version"
@@ -125,11 +125,6 @@ def importReplicaSet():
     featureCompat = db.command({"getParameter":1, "featureCompatibilityVersion":1})
 
     keyFile = cmdLine['security']['keyFile']
-
-    enableEncryption = cmdLine.get('security').get('enableEncryption')
-    encryptionKeyFile = cmdLine.get('security').get('encryptionKeyFile')
-
-
 
     new_config['auth']['keyfile'] = keyFile
     #new_config['auth']['key'] = args.rsKey
@@ -167,14 +162,6 @@ def importReplicaSet():
                 db.authenticate(args.rsUser, args.rsPassword)
                 cmdLine = db.command("getCmdLineOpts").get("parsed", None)
                 buildInfo = db.command("buildinfo")
-            #conf = db.command("replSetGetConfig").get("config", None)
-
-            xxx = json.dumps(cmdLine, indent=4)
-            print(xxx)
-
-            #print (cmdLine)
-
-            #print(buildInfo)
 
             del member['tags']
             del member['buildIndexes']
