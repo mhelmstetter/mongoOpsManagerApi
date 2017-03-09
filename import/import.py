@@ -122,7 +122,7 @@ def importReplicaSet():
     db.authenticate(args.rsUser, args.rsPassword)
     conf = db.command("replSetGetConfig").get("config", None)
     cmdLine = db.command("getCmdLineOpts").get("parsed", None)
-    featureCompat = db.command({"getParameter":1, "featureCompatibilityVersion":1})
+    params = db.command({"getParameter":"*"})
 
     keyFile = cmdLine['security']['keyFile']
 
@@ -169,8 +169,8 @@ def importReplicaSet():
             process['hostname'] = host
 
 
-            if featureCompat.get("featureCompatibilityVersion"):
-                process['featureCompatibilityVersion'] = featureCompat.get("featureCompatibilityVersion")
+            if params.get("featureCompatibilityVersion"):
+                process['featureCompatibilityVersion'] = params.get("featureCompatibilityVersion")
 
             if "enterprise" in buildInfo['modules']:
                 process['version'] = buildInfo['version'] + '-ent'
