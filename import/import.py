@@ -87,6 +87,12 @@ def printAutomationConfig():
     configStr = json.dumps(config, indent=4)
     print(configStr)
 
+def removeNoTablescan(cmdLine):
+    notablescan = cmdLine.get("setParameter").get("notablescan")
+    if notablescan is not None:
+        del cmdLine['setParameter']['notablescan']
+
+
 def importReplicaSet():
     config = getAutomationConfig()
     new_config = copy.deepcopy(config)
@@ -127,6 +133,8 @@ def importReplicaSet():
     db.authenticate(args.rsUser, args.rsPassword)
     conf = db.command("replSetGetConfig").get("config", None)
     cmdLine = db.command("getCmdLineOpts").get("parsed", None)
+    removeNoTablescan(cmdLine)
+
     params = db.command({"getParameter":"*"})
 
     keyFile = cmdLine['security']['keyFile']
@@ -166,6 +174,7 @@ def importReplicaSet():
             if not member['arbiterOnly']:
                 db.authenticate(args.rsUser, args.rsPassword)
                 cmdLine = db.command("getCmdLineOpts").get("parsed", None)
+                removeNoTablescan(cmdLine)
                 buildInfo = db.command("buildinfo")
 
             del member['tags']
