@@ -82,6 +82,15 @@ def getAutomationConfig():
     #print(response.content)
     return response.json()
 
+def getHosts():
+    response = requests.get(hostsEndpoint
+            ,auth=HTTPDigestAuth(args.username,args.apiKey), verify=False)
+    response.raise_for_status()
+    #print "Result %s %s" % (response.status_code,response.reason)
+    #print(response.headers)
+    #print(response.content)
+    return response.json()
+
 def printAutomationConfig():
     config = getAutomationConfig()
     configStr = json.dumps(config, indent=4)
@@ -218,16 +227,46 @@ def removeReplicaSet():
     config = getAutomationConfig()
     new_config = copy.deepcopy(config)
 
+    for item in list(new_config['processes']):
+        if item.get('name').startswith(args.rsName):
+            print(str(item))
+            new_config['processes'].remove(item)
+
     for index, process in enumerate(new_config['processes']):
         if process.get('name').startswith(args.rsName):
-            del process
+            del new_config['processes'][index]
 
     for index, replSet in enumerate(new_config['replicaSets']):
         if replSet['_id'] == args.rsName:
-            del replSet
+            del new_config['replicaSets'][index]
+
+    hosts = getHosts()
+#     configStr = json.dumps(hosts, indent=4)
+#     print(configStr)
+
+    for host in hosts['results']:
+        #print(str(host))
+        if host['replicaSetName'] == args.rsName:
+            __delete(host['id'])
 
     __post_automation_config(new_config)
 
+def __delete(host_id):
+    print str(host_id)
+    endpoint = hostsEndpoint + "/" + host_id
+    response = requests.delete(endpoint,
+                auth=HTTPDigestAuth(args.username,args.apiKey),
+                headers=headers,
+                verify=False)
+
+    print "Result %s %s" % (response.status_code,response.reason)
+
+    if (response.status_code != requests.codes.created):
+        print "ERROR %s %s" % (response.status_code,response.reason)
+        print(response.headers)
+        print(response.content)
+    else:
+        response.raise_for_status()
 
 def __post_automation_config(automation_config):
     response = requests.put(automationConfigEndpoint,
@@ -280,7 +319,7 @@ actionsParser.add_argument("--importReplicaSet",dest='action', action='store_con
         ,const=importReplicaSet
         ,help='Import an existing replica set')
 actionsParser.add_argument("--removeReplicaSet",dest='action', action='store_const'
-        ,const=importReplicaSet
+        ,const=removeReplicaSet
         ,help='Remove an existing replica set')
 
 
