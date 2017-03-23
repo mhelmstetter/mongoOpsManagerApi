@@ -214,6 +214,20 @@ def importReplicaSet():
 
     __post_automation_config(new_config)
 
+def removeReplicaSet():
+    config = getAutomationConfig()
+    new_config = copy.deepcopy(config)
+
+    for index, process in enumerate(new_config['processes']):
+        if process.get('name').startswith(args.rsName):
+            del process
+
+    for index, replSet in enumerate(new_config['replicaSets']):
+        if replSet['_id'] == args.rsName:
+            del replSet
+
+    __post_automation_config(new_config)
+
 
 def __post_automation_config(automation_config):
     response = requests.put(automationConfigEndpoint,
@@ -265,6 +279,9 @@ actionsParser.add_argument("--printAutomationConfig",dest='action', action='stor
 actionsParser.add_argument("--importReplicaSet",dest='action', action='store_const'
         ,const=importReplicaSet
         ,help='Import an existing replica set')
+actionsParser.add_argument("--removeReplicaSet",dest='action', action='store_const'
+        ,const=importReplicaSet
+        ,help='Remove an existing replica set')
 
 
 optionsParser = parser.add_argument_group('options')
