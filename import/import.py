@@ -244,12 +244,12 @@ def removeReplicaSet():
 #     configStr = json.dumps(hosts, indent=4)
 #     print(configStr)
 
+    __post_automation_config(new_config)
+
     for host in hosts['results']:
         #print(str(host))
         if host['replicaSetName'] == args.rsName:
             __delete(host['id'])
-
-    __post_automation_config(new_config)
 
 def __delete(host_id):
     print str(host_id)
