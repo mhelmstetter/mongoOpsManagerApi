@@ -58,6 +58,6 @@ python import.py \
     --importReplicaSet \
     --rsName shard0 --rsPort 27017 \
     --rsUser admin --rsPassword admin \
-    --rsHosts mongo1.foo.com
+    --rsHost mongo1.foo.com
 ```
 
