@@ -5,6 +5,7 @@ import argparse
 import sys
 import copy
 from pymongo import MongoClient
+from bson.json_util import dumps
 
 
 def getAutomationConfig():
@@ -18,20 +19,38 @@ def printAutomationConfig():
     configStr = json.dumps(config, indent=4)
     print(configStr)
 
+
+#
+# Wait for a given member to become either
+# PRIMARY', 'SECONDARY',  or 'ARBITER' before exiting the script
+#
 def waitForSecondary():
+    client = MongoClient(host=host, port=int(port))
+    db = client.admin
+    db.authenticate(args.rsUser, args.rsPassword)
+
     print "Wait for secondary"
-    conf = db.command("replSetGetStatus")
-    configStr = json.dumps(conf, indent=4)
-    print(configStr)
+    okStatus = {'PRIMARY', 'SECONDARY', 'ARBITER'}
+    while True:
+        status = db.command("replSetGetStatus")
+        for member in status['members']:
+            print member['name']
+            if member['name'] == args.hostPort:
+                stateStr = member['stateStr']
+                print 'stateStr: ' + stateStr
+                if stateStr in okStatus:
+                    return
+
 
 def __startStopHost(disabledState):
 
     config = getAutomationConfig()
     new_config = copy.deepcopy(config)
 
-
+    modifiedCount = 0
     for item in list(new_config['processes']):
         if item.get('hostname') == host and item.get('args2_6', {}).get('net', {}).get('port') == int(port):
+            modifiedCount += 1
             processName = item.get('name')
             if disabledState:
                 print 'Asked to stop process ' + processName
@@ -42,10 +61,15 @@ def __startStopHost(disabledState):
                     del item['disabled']
 
 
-    __post_automation_config(new_config)
+    if modifiedCount > 0:
+        __post_automation_config(new_config)
 
-    if not disabledState:
-        waitForSecondary()
+# TODO - improve this logic to handle waiting for the connection
+#        if not disabledState:
+#            waitForSecondary()
+    else:
+        print "WARNING No matching host(s) %s found in automation config" % (args.hostPort)
+        sys.exit(1)
 
 def stopHost():
     __startStopHost(True)
@@ -127,11 +151,13 @@ if args.action is None:
 automationConfigEndpoint = args.host +"/api/public/v1.0/groups/" + args.group +"/automationConfig"
 
 hostPort = args.hostPort.split(':')
+if len(hostPort) != 2:
+    print "ERROR Invalid hostPort %s, should be of the form mongohost1.foo.com:27017" % (hostPort)
+    sys.exit(2)
+
 host = hostPort[0]
 port = hostPort[1]
-client = MongoClient(host=host, port=int(port))
-db = client.admin
-db.authenticate(args.rsUser, args.rsPassword)
+
 
 # based on the argument passed, this will call the "const" function from the parser config
 # e.g. --disableAlertConfigs argument will call disableAlerts()
