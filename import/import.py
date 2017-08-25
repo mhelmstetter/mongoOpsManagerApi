@@ -97,7 +97,7 @@ def printAutomationConfig():
     print(configStr)
 
 def removeNoTablescan(cmdLine):
-    notablescan = cmdLine.get("setParameter").get("notablescan")
+    notablescan = cmdLine.get("setParameter", {}).get("notablescan")
     if notablescan is not None:
         del cmdLine['setParameter']['notablescan']
 
@@ -123,12 +123,6 @@ def importReplicaSet():
         print "*** adding backup user"
         new_config['auth']['usersWanted'].append(backupUser)
 
-    new_config['auth']['disabled'] = False
-    new_config['auth']['authoritativeSet'] = False
-    new_config['auth']['autoUser'] = "mms-automation"
-    #new_config['auth']['autoPwd'] = ''.join(random.choice('0123456789abcdef') for n in xrange(30))
-
-    new_config['auth']['deploymentAuthMechanisms'] =  ["MONGODB-CR"]
 
     hosts = args.rsHost.split(",")
 
@@ -141,19 +135,29 @@ def importReplicaSet():
     db = client.admin
     db.authenticate(args.rsUser, args.rsPassword)
     conf = db.command("replSetGetConfig").get("config", None)
-    cmdLine = db.command("getCmdLineOpts").get("parsed", None)
+    cmdLine = db.command("getCmdLineOpts", {}).get("parsed", None)
     removeNoTablescan(cmdLine)
 
     params = db.command({"getParameter":"*"})
 
-    keyFile = cmdLine['security']['keyFile']
 
-    new_config['auth']['keyfile'] = keyFile
+    #
+    # TODO - improve this with conditional logic but for now DO NOT mess with
+    # auth settings, just import into the existing group
+    # and take on the existing auth settings.
+    #
+    #
+    #new_config['auth']['disabled'] = False
+    #new_config['auth']['authoritativeSet'] = False
+    #new_config['auth']['autoUser'] = "mms-automation"
+    #new_config['auth']['autoPwd'] = ''.join(random.choice('0123456789abcdef') for n in xrange(30))
+    #new_config['auth']['deploymentAuthMechanisms'] =  ["MONGODB-CR"]
+    #keyFile = cmdLine['security']['keyFile']
+    #new_config['auth']['keyfile'] = keyFile
     #new_config['auth']['key'] = args.rsKey
-
-    with open(keyFile, 'r') as myfile:
-        data = myfile.read().replace('\n', '')
-        new_config['auth']['key'] = data
+    #with open(keyFile, 'r') as myfile:
+    #    data = myfile.read().replace('\n', '')
+    #    new_config['auth']['key'] = data
 
     #
     if not any(x['user'] == args.rsUser for x in new_config['auth']['usersWanted']):
