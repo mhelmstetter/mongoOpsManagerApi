@@ -176,24 +176,39 @@ def importReplicaSet():
         del rsConfig['settings']
         del rsConfig['version']
         del rsConfig['protocolVersion']
+
+        arbConfig = None
         for member in rsConfig['members']:
             print(member)
             hostPort = member['host'].split(':')
             host = hostPort[0]
             port = hostPort[1]
 
-            client = MongoClient(host=host, port=int(port))
-            db = client.admin
-            if not member['arbiterOnly']:
-                db.authenticate(args.rsUser, args.rsPassword)
-                cmdLine = db.command("getCmdLineOpts").get("parsed", None)
-                removeNoTablescan(cmdLine)
-                buildInfo = db.command("buildinfo")
+            #print "*** port " + port
 
-            del member['tags']
-            del member['buildIndexes']
             process = copy.deepcopy(processTemplate)
             process['hostname'] = host
+
+
+            if not member['arbiterOnly']:
+                client = MongoClient(host=host, port=int(port))
+                db = client.admin
+                db.authenticate(args.rsUser, args.rsPassword)
+                cmdLine = copy.deepcopy(db.command("getCmdLineOpts").get("parsed", None))
+                arbConfig = copy.deepcopy(cmdLine)
+                removeNoTablescan(cmdLine)
+                buildInfo = db.command("buildinfo")
+            else:
+                # Don't authenticate for arbiter, AND arbiter must be localhost
+                # in order to have permission to run getCmdLineOpts!!!!!
+                client = MongoClient(host="localhost", port=int(port))
+                db = client.admin
+                cmdLine = copy.deepcopy(db.command("getCmdLineOpts").get("parsed", None))
+
+            process['args2_6'] = cmdLine
+            del member['tags']
+            del member['buildIndexes']
+
 
 
             if params.get("featureCompatibilityVersion"):
@@ -206,14 +221,17 @@ def importReplicaSet():
 
             process['name'] = args.rsName + "_" + str(process_id)
 
-            process['args2_6'] = cmdLine
+
+
+
             #replSet = cmdLine['replication']['replSet']
             replSet = rsConfig['_id']
             if process.get('args2_6').get('replication').get('replSet'):
                 del process['args2_6']['replication']['replSet']
             process['args2_6']['replication']['replSetName'] = replSet
+            process['args2_6']['net']['port'] = port
 
-
+            #print(process)
             new_config['processes'].append(process)
             rsConfig['members'][process_id]['_id'] = process_id
             rsConfig['members'][process_id]['host'] = args.rsName + "_" + str(process_id)
@@ -221,9 +239,6 @@ def importReplicaSet():
 
         #print(rsConfig)
         new_config['replicaSets'].append(rsConfig)
-
-    #configStr = json.dumps(new_config, indent=4)
-    #print(configStr)
 
     __post_automation_config(new_config)
 
@@ -233,7 +248,7 @@ def removeReplicaSet():
 
     for item in list(new_config['processes']):
         if item.get('name').startswith(args.rsName):
-            print(str(item))
+            #print(str(item))
             new_config['processes'].remove(item)
 
     for index, process in enumerate(new_config['processes']):
@@ -273,6 +288,9 @@ def __delete(host_id):
         response.raise_for_status()
 
 def __post_automation_config(automation_config):
+    configStr = json.dumps(automation_config, indent=4)
+    print(configStr)
+
     response = requests.put(automationConfigEndpoint,
                 auth=HTTPDigestAuth(args.username,args.apiKey),
                 data=json.dumps(automation_config),
