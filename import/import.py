@@ -147,11 +147,17 @@ def importReplicaSet():
     # and take on the existing auth settings.
     #
     #
-    #new_config['auth']['disabled'] = False
-    #new_config['auth']['authoritativeSet'] = False
-    #new_config['auth']['autoUser'] = "mms-automation"
-    #new_config['auth']['autoPwd'] = ''.join(random.choice('0123456789abcdef') for n in xrange(30))
-    #new_config['auth']['deploymentAuthMechanisms'] =  ["MONGODB-CR"]
+    new_config['auth']['disabled'] = False
+    new_config['auth']['authoritativeSet'] = False
+    new_config['auth']['autoUser'] = "mms-automation"
+
+    # Set automation password to value sent in if present, otherwise, choose a randon one
+    if args.autoPassword:
+        new_config['auth']['autoPwd'] = args.autoPassword
+    else:
+        new_config['auth']['autoPwd'] = ''.join(random.choice('0123456789abcdef') for n in xrange(30))
+
+    new_config['auth']['deploymentAuthMechanisms'] =  ["MONGODB-CR"]
     #keyFile = cmdLine['security']['keyFile']
     #new_config['auth']['keyfile'] = keyFile
     #new_config['auth']['key'] = args.rsKey
@@ -362,6 +368,10 @@ optionsParser.add_argument("--rsUser"
 optionsParser.add_argument("--rsPassword"
         ,help='MongoDB password to connect to replica set'
         ,required=False)
+optionsParser.add_argument("--autoPassword"
+        ,help='MongoDB password for mms-automation user'
+        ,required=False)
+
 
 args = parser.parse_args()
 
