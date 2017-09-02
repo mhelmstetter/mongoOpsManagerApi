@@ -6,6 +6,35 @@ import sys
 import copy
 import random
 from pymongo import MongoClient
+import fcntl
+import errno
+import time
+
+# LaSpina - added file locking mechanism to prevent multiple scripts from running
+class FileLock:
+    def __init__(self, filename=None):
+        self.filename = './MONGODB_AUTOMATION_LOCK_FILE' if filename is None else filename
+        self.lock_file = open(self.filename, 'w+')
+
+    def unlock(self):
+        fcntl.flock(self.lock_file, fcntl.LOCK_UN)
+
+    def lock(self, maximum_wait=10):
+        waited = 0
+        while True:
+            try:
+                fcntl.flock(self.lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                print ("file locked")
+                return True
+            except IOError as e:
+                if e.errno != errno.EAGAIN:
+                    raise e
+                else:
+                    time.sleep(1)
+                    waited += 1
+                    if waited >= maximum_wait:
+                        return False
+
 
 processTemplate = {
     "authSchemaVersion": 5,
@@ -371,12 +400,20 @@ optionsParser.add_argument("--rsPassword"
 optionsParser.add_argument("--autoPassword"
         ,help='MongoDB password for mms-automation user'
         ,required=False)
+optionsParser.add_argument("--waitForLock"
+        ,help='Number of seconds to wait for a process lock - default 10 '
+        ,required=False)
 
 
 args = parser.parse_args()
 
 if args.action is None:
     parser.parse_args(['-h'])
+
+fl = FileLock()
+if not fl.lock(int(args.waitForLock) if args.waitForLock is not None else 10):
+    print ("Could not obtain process lock - exiting")
+    sys.exit(1)
 
 alertConfigsEndpoint = args.host +"/api/public/v1.0/groups/" + args.group +"/alertConfigs"
 hostsEndpoint = args.host +"/api/public/v1.0/groups/" + args.group +"/hosts"
@@ -386,6 +423,4 @@ automationConfigEndpoint = args.host +"/api/public/v1.0/groups/" + args.group +"
 # e.g. --disableAlertConfigs argument will call disableAlerts()
 args.action()
 
-
-
-
+fl.unlock()

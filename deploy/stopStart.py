@@ -6,6 +6,34 @@ import sys
 import copy
 from pymongo import MongoClient
 from bson.json_util import dumps
+import fcntl
+import errno
+import time
+
+# LaSpina - added file locking mechanism to prevent multiple scripts from running
+class FileLock:
+    def __init__(self, filename=None):
+        self.filename = './MONGODB_AUTOMATION_LOCK_FILE' if filename is None else filename
+        self.lock_file = open(self.filename, 'w+')
+
+    def unlock(self):
+        fcntl.flock(self.lock_file, fcntl.LOCK_UN)
+
+    def lock(self, maximum_wait=10):
+        waited = 0
+        while True:
+            try:
+                fcntl.flock(self.lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                print ("file locked")
+                return True
+            except IOError as e:
+                if e.errno != errno.EAGAIN:
+                    raise e
+                else:
+                    time.sleep(1)
+                    waited += 1
+                    if waited >= maximum_wait:
+                        return False
 
 
 def getAutomationConfig():
@@ -30,7 +58,8 @@ def waitForSecondary():
     db.authenticate(args.rsUser, args.rsPassword)
 
     print "Wait for secondary"
-    okStatus = {'PRIMARY', 'SECONDARY', 'ARBITER'}
+    # LaSpina - Changed from dictionary {} to list [] for 2.5 compatibility.
+    okStatus = ['PRIMARY', 'SECONDARY', 'ARBITER']
     while True:
         status = db.command("replSetGetStatus")
         for member in status['members']:
@@ -43,7 +72,6 @@ def waitForSecondary():
 
 
 def __startStopHost(disabledState):
-
     config = getAutomationConfig()
     new_config = copy.deepcopy(config)
 
@@ -60,7 +88,6 @@ def __startStopHost(disabledState):
                 if item.get('disabled'):
                     del item['disabled']
 
-
     if modifiedCount > 0:
         __post_automation_config(new_config)
 
@@ -69,7 +96,10 @@ def __startStopHost(disabledState):
 #            waitForSecondary()
     else:
         print "WARNING No matching host(s) %s found in automation config" % (args.hostPort)
+        fl.unlock()
         sys.exit(1)
+
+    
 
 def stopHost():
     __startStopHost(True)
@@ -140,13 +170,20 @@ optionsParser.add_argument("--rsUser"
 optionsParser.add_argument("--rsPassword"
         ,help='MongoDB password to connect to replica set'
         ,required=False)
-
+optionsParser.add_argument("--waitForLock"
+        ,help='Number of seconds to wait for a process lock - default 10 '
+        ,required=False)
 
 
 args = parser.parse_args()
 
 if args.action is None:
     parser.parse_args(['-h'])
+
+fl = FileLock()
+if not fl.lock(int(args.waitForLock) if args.waitForLock is not None else 10):
+    print ("Could not obtain process lock - exiting")
+    sys.exit(1)
 
 automationConfigEndpoint = args.host +"/api/public/v1.0/groups/" + args.group +"/automationConfig"
 
@@ -162,7 +199,6 @@ port = hostPort[1]
 # based on the argument passed, this will call the "const" function from the parser config
 # e.g. --disableAlertConfigs argument will call disableAlerts()
 args.action()
+time.sleep(30)
 
-
-
-
+fl.unlock()

@@ -38,6 +38,10 @@ options:
   --rsUser RSUSER       MongoDB username to connect to replica set
   --rsPassword RSPASSWORD
                         MongoDB password to connect to replica set
+  --autoPassword AUTOPASSWORD
+                        MongoDB password for mms-automation user
+  --waitForLock SECONDS
+                        Number of seconds to wait for a process lock - default 10
 ```
 
 
