@@ -2,7 +2,10 @@ import requests
 from requests.auth import HTTPDigestAuth
 import json
 import argparse
+import logging
+import pprint
 import sys
+import time
 import copy
 from pymongo import MongoClient
 from bson.json_util import dumps
@@ -36,18 +39,25 @@ class FileLock:
                         return False
 
 
-def getAutomationConfig():
-    response = requests.get(automationConfigEndpoint
-            ,auth=HTTPDigestAuth(args.username,args.apiKey), verify=False)
-    response.raise_for_status()
-    return response.json()
+from lib import automation_api_base
 
-def printAutomationConfig():
-    config = getAutomationConfig()
-    configStr = json.dumps(config, indent=4)
-    print(configStr)
+logging.basicConfig(level=logging.INFO, format='[%(asctime)s] [%(levelname)s] %(message)s')
+
+class TestAutomationApi(AutomationApiBase):
+
+    def __init__(self, base_url, machine_hostname, group_id, api_user, api_key, config_name):
+        AutomationApiBase.__init__(self, base_url, machine_hostname, group_id, api_user, api_key)
+        self.config_name = config_name
+
+    def clean(self):
+        self.post_automation_config("configs/api_0_clean.json")
+
+    def run(self):
+
+        self.post_automation_config("configs/%s.json" % self.config_name)
 
 
+if __name__ == '__main__':
 #
 # Wait for a given member to become either
 # PRIMARY', 'SECONDARY',  or 'ARBITER' before exiting the script

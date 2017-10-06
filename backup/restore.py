@@ -14,7 +14,7 @@ logging.getLogger("requests").setLevel(logging.WARNING)
 
 def get(url):
     logging.debug("Executing GET: %s" % url)
-    r = requests.get(url, auth=HTTPDigestAuth(args.username,args.apiKey))
+    r = requests.get(url, auth=HTTPDigestAuth(args.username,args.apiKey), verify=False)
     check_response(r)
     logging.debug("%s" % pprint.pformat(r.json()))
     return r.json()
@@ -25,6 +25,7 @@ def post(url, json_body):
     r = requests.post(
         url,
         auth=HTTPDigestAuth(args.username, args.apiKey),
+        verify=False,
         data=json.dumps(json_body),
         headers=headers
     )
@@ -38,6 +39,7 @@ def put(url, json_body):
     r = requests.put(
         url,
         auth=HTTPDigestAuth(args.username, args.apiKey),
+        verify=False,
         data=json.dumps(json_body),
         headers=headers
     )
@@ -143,6 +145,16 @@ def printSnapshots():
     for snapshot in response['results']:
         print "%s  %s" % (snapshot['id'], snapshot['created']['date'])
 
+def printRestoreJobs():
+    cluster_id = _get_cluster_id_from_replica_set(args.group, args.clusterName)
+    url = "%s/api/public/v1.0/groups/%s/clusters/%s/restoreJobs" % (args.host, args.group, cluster_id)
+    response = get(url)
+    for job in response['results']:
+        cid = job['clusterId']
+        clusterName = get_replica_set_from_cluster_id(args.group, cid)
+        print "%s  %s" % (clusterName, job['delivery']['url'])
+
+
 def get_cluster_info(group_id, cluster_name):
     cluster_info = {}
     sets = []
@@ -200,6 +212,7 @@ def restore():
 
         if len(restore_links) == batch_count:
             logging.info("Restore jobs ready")
+            logging.info(restore_links)
             break
 
         sys.stdout.write('.')
@@ -223,13 +236,13 @@ def restore():
             if rName in dest_cluster_info['sets']:
                 i = dest_cluster_info['sets'].index(rName)
                 mappedName = source_cluster_info['sets'][i]
-                print(rName + " -> " + mappedName)
             elif rName == dest_cluster_info['configRsName']:
                 mappedName = source_cluster_info['configRsName']
-                print(rName + " -> " + mappedName)
             else:
                 print "**** rName" + rName + " not found"
             link = restore_links[mappedName]
+            print(rName + " -> " + mappedName + " " + link)
+            logging.info(mappedName + " " + link)
             process['backupRestoreUrl'] = link
 
     logging.info("Initializing restore")
@@ -286,7 +299,7 @@ enabled = { "enabled" : "true" }
 
 requests.packages.urllib3.disable_warnings()
 
-parser = argparse.ArgumentParser(description="Manage users from MongoDB Ops/Cloud Manager")
+parser = argparse.ArgumentParser(description="Restore backups via MongoDB Ops/Cloud Manager")
 
 requiredNamed = parser.add_argument_group('required arguments')
 requiredNamed.add_argument("--host"
@@ -302,7 +315,7 @@ requiredNamed.add_argument("--apiKey"
         ,help='OpsMgr api key for the user'
         ,required=True)
 requiredNamed.add_argument("--clusterName"
-        ,help='Replica set name OR sharded cluster name'
+        ,help='Source Replica set name OR sharded cluster name'
         ,required=True)
 
 actionsParser = parser.add_argument_group('actions')
@@ -312,6 +325,9 @@ actionsParser.add_argument("--restore",dest='action', action='store_const'
 actionsParser.add_argument("--printSnapshots",dest='action', action='store_const'
         ,const=printSnapshots
         ,help='Print snapshots')
+actionsParser.add_argument("--printRestoreJobs",dest='action', action='store_const'
+        ,const=printRestoreJobs
+        ,help='Print restore jobs')
 
 
 
