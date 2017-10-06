@@ -12,6 +12,9 @@ from bson.json_util import dumps
 import fcntl
 import errno
 import time
+from lib import automation_api_base as auto
+
+logging.basicConfig(level=logging.INFO, format='[%(asctime)s] [%(levelname)s] %(message)s')
 
 # LaSpina - added file locking mechanism to prevent multiple scripts from running
 class FileLock:
@@ -39,25 +42,7 @@ class FileLock:
                         return False
 
 
-from lib import automation_api_base
 
-logging.basicConfig(level=logging.INFO, format='[%(asctime)s] [%(levelname)s] %(message)s')
-
-class TestAutomationApi(AutomationApiBase):
-
-    def __init__(self, base_url, machine_hostname, group_id, api_user, api_key, config_name):
-        AutomationApiBase.__init__(self, base_url, machine_hostname, group_id, api_user, api_key)
-        self.config_name = config_name
-
-    def clean(self):
-        self.post_automation_config("configs/api_0_clean.json")
-
-    def run(self):
-
-        self.post_automation_config("configs/%s.json" % self.config_name)
-
-
-if __name__ == '__main__':
 #
 # Wait for a given member to become either
 # PRIMARY', 'SECONDARY',  or 'ARBITER' before exiting the script
@@ -82,7 +67,7 @@ def waitForSecondary():
 
 
 def __startStopHost(disabledState):
-    config = getAutomationConfig()
+    config = auto.getAutomationConfig()
     new_config = copy.deepcopy(config)
 
     modifiedCount = 0
@@ -109,7 +94,7 @@ def __startStopHost(disabledState):
         fl.unlock()
         sys.exit(1)
 
-    
+
 
 def stopHost():
     __startStopHost(True)
