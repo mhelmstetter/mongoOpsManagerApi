@@ -1,0 +1,970 @@
+{
+    "uiBaseUrl": null, 
+    "processes": [
+        {
+            "authSchemaVersion": 5, 
+            "name": "c1_c1_0_97", 
+            "hostname": "ip-172-31-32-29.us-west-2.compute.internal", 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12", 
+            "args2_6": {
+                "replication": {
+                    "replSetName": "c1_0"
+                }, 
+                "net": {
+                    "port": 27000
+                }, 
+                "storage": {
+                    "dbPath": "/data/c1_c1_0_97"
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/data/c1_c1_0_97/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "c1_c1_0_98", 
+            "hostname": "ip-172-31-36-23.us-west-2.compute.internal", 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12", 
+            "args2_6": {
+                "replication": {
+                    "replSetName": "c1_0"
+                }, 
+                "net": {
+                    "port": 27000
+                }, 
+                "storage": {
+                    "dbPath": "/data/c1_c1_0_98"
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/data/c1_c1_0_98/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "c1_c1_0_99", 
+            "hostname": "ip-172-31-32-29.us-west-2.compute.internal", 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12", 
+            "args2_6": {
+                "replication": {
+                    "replSetName": "c1_0"
+                }, 
+                "net": {
+                    "port": 27001
+                }, 
+                "storage": {
+                    "dbPath": "/data/c1_c1_0_99"
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/data/c1_c1_0_99/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "c1_c1_1_100", 
+            "hostname": "ip-172-31-36-23.us-west-2.compute.internal", 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12", 
+            "args2_6": {
+                "replication": {
+                    "replSetName": "c1_1"
+                }, 
+                "net": {
+                    "port": 27001
+                }, 
+                "storage": {
+                    "dbPath": "/data/c1_c1_1_100"
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/data/c1_c1_1_100/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "c1_c1_1_101", 
+            "hostname": "ip-172-31-32-29.us-west-2.compute.internal", 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12", 
+            "args2_6": {
+                "replication": {
+                    "replSetName": "c1_1"
+                }, 
+                "net": {
+                    "port": 27002
+                }, 
+                "storage": {
+                    "dbPath": "/data/c1_c1_1_101"
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/data/c1_c1_1_101/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "c1_c1_1_102", 
+            "hostname": "ip-172-31-36-23.us-west-2.compute.internal", 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12", 
+            "args2_6": {
+                "replication": {
+                    "replSetName": "c1_1"
+                }, 
+                "net": {
+                    "port": 27002
+                }, 
+                "storage": {
+                    "dbPath": "/data/c1_c1_1_102"
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/data/c1_c1_1_102/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "c1-configRS_103", 
+            "hostname": "ip-172-31-32-29.us-west-2.compute.internal", 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12", 
+            "args2_6": {
+                "storage": {
+                    "dbPath": "/data/c1-configRS_103"
+                }, 
+                "operationProfiling": {}, 
+                "replication": {
+                    "replSetName": "c1-configRS"
+                }, 
+                "systemLog": {
+                    "path": "/data/c1-configRS_103/mongodb.log", 
+                    "destination": "file"
+                }, 
+                "sharding": {
+                    "clusterRole": "configsvr"
+                }, 
+                "net": {
+                    "port": 28001
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "c1_mongos_104", 
+            "hostname": "ip-172-31-36-23.us-west-2.compute.internal", 
+            "cluster": "c1", 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12", 
+            "args2_6": {
+                "net": {
+                    "port": 27003
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/data/c1_mongos_104/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongos"
+        }
+    ], 
+    "indexConfigs": [], 
+    "roles": [], 
+    "monitoringVersions": [
+        {
+            "directoryUrl": null, 
+            "hostname": "ip-172-31-36-23.us-west-2.compute.internal", 
+            "baseUrl": null, 
+            "name": "5.4.4.366-1"
+        }
+    ], 
+    "auth": {
+        "usersDeleted": [], 
+        "autoUser": "mms-automation", 
+        "usersWanted": [
+            {
+                "db": "admin", 
+                "scramSha1Creds": {
+                    "salt": "9ixQEnpshXrcmSWGn/wwRA==", 
+                    "storedKey": "prVPJ7IA4jRgQxOAy8HFOxUtLrg=", 
+                    "iterationCount": 10000, 
+                    "serverKey": "qMHlXByMry2GhSgRl40UkBDBuqI="
+                }, 
+                "roles": [
+                    {
+                        "role": "root", 
+                        "db": "admin"
+                    }
+                ], 
+                "user": "admin"
+            }, 
+            {
+                "pwd": "b12470a1991635260fe295752d9c34a2", 
+                "db": "admin", 
+                "user": "mms-backup-agent", 
+                "roles": [
+                    {
+                        "role": "clusterAdmin", 
+                        "db": "admin"
+                    }, 
+                    {
+                        "role": "readAnyDatabase", 
+                        "db": "admin"
+                    }, 
+                    {
+                        "role": "userAdminAnyDatabase", 
+                        "db": "admin"
+                    }, 
+                    {
+                        "role": "readWrite", 
+                        "db": "local"
+                    }, 
+                    {
+                        "role": "readWrite", 
+                        "db": "admin"
+                    }
+                ]
+            }, 
+            {
+                "pwd": "1cf4925d6fbc92e98530980bed097d3a", 
+                "db": "admin", 
+                "user": "mms-monitoring-agent", 
+                "roles": [
+                    {
+                        "role": "clusterMonitor", 
+                        "db": "admin"
+                    }
+                ]
+            }
+        ], 
+        "keyfileWindows": "%SystemDrive%\\MMSAutomation\\versions\\keyfile", 
+        "autoLdapGroupDN": "", 
+        "disabled": false, 
+        "deploymentAuthMechanisms": [
+            "MONGODB-CR"
+        ], 
+        "autoKerberosKeytabPath": "", 
+        "autoPwd": "b386182320b2c23a7aaabcee7840b1d1", 
+        "key": "Cx8fXAICsz0H+Ljky4oGVg", 
+        "authoritativeSet": false, 
+        "keyfile": "/var/lib/mongodb-mms-automation/keyfile"
+    }, 
+    "version": 106, 
+    "agentVersion": {
+        "directoryUrl": "http://52.38.47.96:8080/download/agent/automation/", 
+        "name": "3.2.10.1997-1"
+    }, 
+    "sharding": [
+        {
+            "name": "c1", 
+            "tags": [], 
+            "shards": [
+                {
+                    "_id": "c1_0", 
+                    "tags": [], 
+                    "rs": "c1_0"
+                }, 
+                {
+                    "_id": "c1_1", 
+                    "tags": [], 
+                    "rs": "c1_1"
+                }
+            ], 
+            "configServerReplica": "c1-configRS", 
+            "collections": [], 
+            "managedSharding": false
+        }
+    ], 
+    "mongoDbVersions": [
+        {
+            "builds": [
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.2.12.tgz", 
+                    "platform": "linux", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel55-3.2.12.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "6.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "5.5", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel62-3.2.12.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "7.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "6.2", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-3.2.12.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "8.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "7.0", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-suse11-3.2.12.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "12.0", 
+                    "flavor": "suse", 
+                    "bits": 64, 
+                    "minOsVersion": "11.0", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-suse12-3.2.12.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "13.0", 
+                    "flavor": "suse", 
+                    "bits": 64, 
+                    "minOsVersion": "12.0", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-debian71-3.2.12.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "8.0", 
+                    "flavor": "debian", 
+                    "bits": 64, 
+                    "minOsVersion": "7.1", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1204-3.2.12.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "13.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "12.04", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-3.2.12.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "15.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "14.04", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1604-3.2.12.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "17.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "16.04", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-amazon-3.2.12.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "", 
+                    "flavor": "amazon", 
+                    "bits": 64, 
+                    "minOsVersion": "2013.03", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.12.tgz", 
+                    "platform": "osx", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-3.2.12.zip", 
+                    "platform": "windows", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "winVCRedistUrl": "http://download.microsoft.com/download/2/E/6/2E61CFA4-993B-4DD4-91DA-3737CD5CD6E3/vcredist_x64.exe", 
+                    "winVCRedistDll": "msvcr120.dll", 
+                    "win2008plus": true, 
+                    "url": "https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.2.12.zip", 
+                    "winVCRedistOptions": [
+                        "/quiet", 
+                        "/norestart"
+                    ], 
+                    "winVCRedistVersion": "12.0.21005.1", 
+                    "platform": "windows", 
+                    "architecture": "amd64", 
+                    "bits": 64, 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }
+            ], 
+            "name": "3.2.12"
+        }, 
+        {
+            "builds": [
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.4.0.tgz", 
+                    "platform": "linux", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "f4240c60f005be757399042dc12f6addbc3170c1"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel55-3.4.0.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "6.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "5.5", 
+                    "gitVersion": "f4240c60f005be757399042dc12f6addbc3170c1"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel62-3.4.0.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "7.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "6.2", 
+                    "gitVersion": "f4240c60f005be757399042dc12f6addbc3170c1"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-3.4.0.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "8.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "7.0", 
+                    "gitVersion": "f4240c60f005be757399042dc12f6addbc3170c1"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-suse11-3.4.0.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "12.0", 
+                    "flavor": "suse", 
+                    "bits": 64, 
+                    "minOsVersion": "11.0", 
+                    "gitVersion": "f4240c60f005be757399042dc12f6addbc3170c1"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-suse12-3.4.0.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "13.0", 
+                    "flavor": "suse", 
+                    "bits": 64, 
+                    "minOsVersion": "12.0", 
+                    "gitVersion": "f4240c60f005be757399042dc12f6addbc3170c1"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-debian71-3.4.0.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "8.0", 
+                    "flavor": "debian", 
+                    "bits": 64, 
+                    "minOsVersion": "7.1", 
+                    "gitVersion": "f4240c60f005be757399042dc12f6addbc3170c1"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1204-3.4.0.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "13.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "12.04", 
+                    "gitVersion": "f4240c60f005be757399042dc12f6addbc3170c1"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-3.4.0.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "15.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "14.04", 
+                    "gitVersion": "f4240c60f005be757399042dc12f6addbc3170c1"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1604-3.4.0.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "17.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "16.04", 
+                    "gitVersion": "f4240c60f005be757399042dc12f6addbc3170c1"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-amazon-3.4.0.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "", 
+                    "flavor": "amazon", 
+                    "bits": 64, 
+                    "minOsVersion": "2013.03", 
+                    "gitVersion": "f4240c60f005be757399042dc12f6addbc3170c1"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.4.0.tgz", 
+                    "platform": "osx", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "f4240c60f005be757399042dc12f6addbc3170c1"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-3.4.0.zip", 
+                    "platform": "windows", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "f4240c60f005be757399042dc12f6addbc3170c1"
+                }, 
+                {
+                    "win2008plus": true, 
+                    "url": "https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-3.4.0.zip", 
+                    "platform": "windows", 
+                    "architecture": "amd64", 
+                    "bits": 64, 
+                    "gitVersion": "f4240c60f005be757399042dc12f6addbc3170c1"
+                }
+            ], 
+            "name": "3.4.0"
+        }, 
+        {
+            "builds": [
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.4.1.tgz", 
+                    "platform": "linux", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "5e103c4f5583e2566a45d740225dc250baacfbd7"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel55-3.4.1.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "6.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "5.5", 
+                    "gitVersion": "5e103c4f5583e2566a45d740225dc250baacfbd7"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel62-3.4.1.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "7.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "6.2", 
+                    "gitVersion": "5e103c4f5583e2566a45d740225dc250baacfbd7"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-3.4.1.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "8.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "7.0", 
+                    "gitVersion": "5e103c4f5583e2566a45d740225dc250baacfbd7"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-suse11-3.4.1.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "12.0", 
+                    "flavor": "suse", 
+                    "bits": 64, 
+                    "minOsVersion": "11.0", 
+                    "gitVersion": "5e103c4f5583e2566a45d740225dc250baacfbd7"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-suse12-3.4.1.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "13.0", 
+                    "flavor": "suse", 
+                    "bits": 64, 
+                    "minOsVersion": "12.0", 
+                    "gitVersion": "5e103c4f5583e2566a45d740225dc250baacfbd7"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-debian71-3.4.1.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "8.0", 
+                    "flavor": "debian", 
+                    "bits": 64, 
+                    "minOsVersion": "7.1", 
+                    "gitVersion": "5e103c4f5583e2566a45d740225dc250baacfbd7"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1204-3.4.1.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "13.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "12.04", 
+                    "gitVersion": "5e103c4f5583e2566a45d740225dc250baacfbd7"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-3.4.1.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "15.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "14.04", 
+                    "gitVersion": "5e103c4f5583e2566a45d740225dc250baacfbd7"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1604-3.4.1.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "17.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "16.04", 
+                    "gitVersion": "5e103c4f5583e2566a45d740225dc250baacfbd7"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-amazon-3.4.1.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "", 
+                    "flavor": "amazon", 
+                    "bits": 64, 
+                    "minOsVersion": "2013.03", 
+                    "gitVersion": "5e103c4f5583e2566a45d740225dc250baacfbd7"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.4.1.tgz", 
+                    "platform": "osx", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "5e103c4f5583e2566a45d740225dc250baacfbd7"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-3.4.1.zip", 
+                    "platform": "windows", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "5e103c4f5583e2566a45d740225dc250baacfbd7"
+                }, 
+                {
+                    "winVCRedistUrl": "http://download.microsoft.com/download/6/D/F/6DF3FF94-F7F9-4F0B-838C-A328D1A7D0EE/vc_redist.x64.exe", 
+                    "winVCRedistDll": "vcruntime140.dll", 
+                    "win2008plus": true, 
+                    "url": "https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.4.1.zip", 
+                    "winVCRedistOptions": [
+                        "/quiet", 
+                        "/norestart"
+                    ], 
+                    "winVCRedistVersion": "14.0.24212.0", 
+                    "platform": "windows", 
+                    "architecture": "amd64", 
+                    "bits": 64, 
+                    "gitVersion": "5e103c4f5583e2566a45d740225dc250baacfbd7"
+                }
+            ], 
+            "name": "3.4.1"
+        }, 
+        {
+            "builds": [
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.4.2.tgz", 
+                    "platform": "linux", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "3f76e40c105fc223b3e5aac3e20dcd026b83b38b"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel55-3.4.2.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "6.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "5.5", 
+                    "gitVersion": "3f76e40c105fc223b3e5aac3e20dcd026b83b38b"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel62-3.4.2.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "7.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "6.2", 
+                    "gitVersion": "3f76e40c105fc223b3e5aac3e20dcd026b83b38b"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-3.4.2.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "8.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "7.0", 
+                    "gitVersion": "3f76e40c105fc223b3e5aac3e20dcd026b83b38b"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-suse11-3.4.2.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "12.0", 
+                    "flavor": "suse", 
+                    "bits": 64, 
+                    "minOsVersion": "11.0", 
+                    "gitVersion": "3f76e40c105fc223b3e5aac3e20dcd026b83b38b"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-suse12-3.4.2.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "13.0", 
+                    "flavor": "suse", 
+                    "bits": 64, 
+                    "minOsVersion": "12.0", 
+                    "gitVersion": "3f76e40c105fc223b3e5aac3e20dcd026b83b38b"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-debian71-3.4.2.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "8.0", 
+                    "flavor": "debian", 
+                    "bits": 64, 
+                    "minOsVersion": "7.1", 
+                    "gitVersion": "3f76e40c105fc223b3e5aac3e20dcd026b83b38b"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1204-3.4.2.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "13.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "12.04", 
+                    "gitVersion": "3f76e40c105fc223b3e5aac3e20dcd026b83b38b"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-3.4.2.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "15.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "14.04", 
+                    "gitVersion": "3f76e40c105fc223b3e5aac3e20dcd026b83b38b"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1604-3.4.2.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "17.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "16.04", 
+                    "gitVersion": "3f76e40c105fc223b3e5aac3e20dcd026b83b38b"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-amazon-3.4.2.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "", 
+                    "flavor": "amazon", 
+                    "bits": 64, 
+                    "minOsVersion": "2013.03", 
+                    "gitVersion": "3f76e40c105fc223b3e5aac3e20dcd026b83b38b"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.4.2.tgz", 
+                    "platform": "osx", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "3f76e40c105fc223b3e5aac3e20dcd026b83b38b"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-3.4.2.zip", 
+                    "platform": "windows", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "3f76e40c105fc223b3e5aac3e20dcd026b83b38b"
+                }, 
+                {
+                    "winVCRedistUrl": "http://download.microsoft.com/download/6/D/F/6DF3FF94-F7F9-4F0B-838C-A328D1A7D0EE/vc_redist.x64.exe", 
+                    "winVCRedistDll": "vcruntime140.dll", 
+                    "win2008plus": true, 
+                    "url": "https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.4.2.zip", 
+                    "winVCRedistOptions": [
+                        "/quiet", 
+                        "/norestart"
+                    ], 
+                    "winVCRedistVersion": "14.0.24212.0", 
+                    "platform": "windows", 
+                    "architecture": "amd64", 
+                    "bits": 64, 
+                    "gitVersion": "3f76e40c105fc223b3e5aac3e20dcd026b83b38b"
+                }
+            ], 
+            "name": "3.4.2"
+        }
+    ], 
+    "replicaSets": [
+        {
+            "_id": "c1_0", 
+            "members": [
+                {
+                    "votes": 1, 
+                    "arbiterOnly": false, 
+                    "slaveDelay": 0, 
+                    "priority": 1.0, 
+                    "host": "c1_c1_0_97", 
+                    "hidden": false, 
+                    "_id": 0
+                }, 
+                {
+                    "votes": 1, 
+                    "arbiterOnly": false, 
+                    "slaveDelay": 0, 
+                    "priority": 1.0, 
+                    "host": "c1_c1_0_98", 
+                    "hidden": false, 
+                    "_id": 1
+                }, 
+                {
+                    "votes": 1, 
+                    "arbiterOnly": true, 
+                    "slaveDelay": 0, 
+                    "priority": 0.0, 
+                    "host": "c1_c1_0_99", 
+                    "hidden": false, 
+                    "_id": 2
+                }
+            ]
+        }, 
+        {
+            "_id": "c1_1", 
+            "members": [
+                {
+                    "votes": 1, 
+                    "arbiterOnly": false, 
+                    "slaveDelay": 0, 
+                    "priority": 1.0, 
+                    "host": "c1_c1_1_100", 
+                    "hidden": false, 
+                    "_id": 0
+                }, 
+                {
+                    "votes": 1, 
+                    "arbiterOnly": false, 
+                    "slaveDelay": 0, 
+                    "priority": 1.0, 
+                    "host": "c1_c1_1_101", 
+                    "hidden": false, 
+                    "_id": 1
+                }, 
+                {
+                    "votes": 1, 
+                    "arbiterOnly": true, 
+                    "slaveDelay": 0, 
+                    "priority": 0.0, 
+                    "host": "c1_c1_1_102", 
+                    "hidden": false, 
+                    "_id": 2
+                }
+            ]
+        }, 
+        {
+            "_id": "c1-configRS", 
+            "members": [
+                {
+                    "votes": 1, 
+                    "arbiterOnly": false, 
+                    "slaveDelay": 0, 
+                    "priority": 1.0, 
+                    "host": "c1-configRS_103", 
+                    "hidden": false, 
+                    "_id": 0
+                }
+            ]
+        }
+    ], 
+    "options": {
+        "downloadBase": "/var/lib/mongodb-mms-automation", 
+        "downloadBaseWindows": "%SystemDrive%\\MMSAutomation\\versions"
+    }, 
+    "backupVersions": []
+}

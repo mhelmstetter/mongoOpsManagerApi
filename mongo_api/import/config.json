@@ -1,0 +1,1588 @@
+{
+    "uiBaseUrl": null, 
+    "processes": [
+        {
+            "authSchemaVersion": 5, 
+            "name": "MongoDev-00_Sh_0_0", 
+            "hostname": "US1-AIRMGD-D01.ec2.local", 
+            "disabled": false, 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12-ent", 
+            "args2_6": {
+                "replication": {
+                    "replSetName": "Sh_0"
+                }, 
+                "net": {
+                    "ssl": {
+                        "PEMKeyFile": "/etc/ssl/mongodb/star.ec2.local.pem", 
+                        "mode": "allowSSL", 
+                        "PEMKeyPassword": "Welcome!23"
+                    }, 
+                    "port": 27018
+                }, 
+                "storage": {
+                    "dbPath": "/db/MongoDev-00_Sh_0_0"
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/db/MongoDev-00_Sh_0_0/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "MongoDev-00_Sh_0_1", 
+            "hostname": "US1-AIRMGD-D02.ec2.local", 
+            "disabled": false, 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12-ent", 
+            "args2_6": {
+                "replication": {
+                    "replSetName": "Sh_0"
+                }, 
+                "net": {
+                    "ssl": {
+                        "PEMKeyFile": "/etc/ssl/mongodb/star.ec2.local.pem", 
+                        "mode": "allowSSL", 
+                        "PEMKeyPassword": "Welcome!23"
+                    }, 
+                    "port": 27018
+                }, 
+                "storage": {
+                    "wiredTiger": {
+                        "engineConfig": {
+                            "cacheSizeGB": 6.0
+                        }
+                    }, 
+                    "dbPath": "/db/MongoDev-00_Sh_0_1"
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/db/MongoDev-00_Sh_0_1/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "MongoDev-00_Sh_0_2", 
+            "hostname": "US1-AIRMGS-D01.ec2.local", 
+            "disabled": false, 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12-ent", 
+            "args2_6": {
+                "replication": {
+                    "replSetName": "Sh_0"
+                }, 
+                "net": {
+                    "ssl": {
+                        "PEMKeyFile": "/etc/ssl/mongodb/star.ec2.local.pem", 
+                        "mode": "allowSSL", 
+                        "PEMKeyPassword": "Welcome!23"
+                    }, 
+                    "port": 27019
+                }, 
+                "storage": {
+                    "dbPath": "/db/MongoDev-00_Sh_0_2"
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/db/MongoDev-00_Sh_0_2/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "MongoDev-00_Sh_1_3", 
+            "hostname": "US1-AIRMGD-D04.ec2.local", 
+            "disabled": false, 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12-ent", 
+            "args2_6": {
+                "replication": {
+                    "replSetName": "Sh_1"
+                }, 
+                "net": {
+                    "ssl": {
+                        "PEMKeyFile": "/etc/ssl/mongodb/star.ec2.local.pem", 
+                        "mode": "allowSSL", 
+                        "PEMKeyPassword": "Welcome!23"
+                    }, 
+                    "port": 27018
+                }, 
+                "storage": {
+                    "wiredTiger": {
+                        "engineConfig": {
+                            "cacheSizeGB": 6.0
+                        }
+                    }, 
+                    "dbPath": "/db/MongoDev-00_Sh_1_3"
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/db/MongoDev-00_Sh_1_3/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "MongoDev-00_Sh_1_4", 
+            "hostname": "US1-AIRMGD-D03.ec2.local", 
+            "disabled": false, 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12-ent", 
+            "args2_6": {
+                "replication": {
+                    "replSetName": "Sh_1"
+                }, 
+                "net": {
+                    "ssl": {
+                        "PEMKeyFile": "/etc/ssl/mongodb/star.ec2.local.pem", 
+                        "mode": "allowSSL", 
+                        "PEMKeyPassword": "Welcome!23"
+                    }, 
+                    "port": 27019
+                }, 
+                "storage": {
+                    "dbPath": "/db/MongoDev-00_Sh_1_4"
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/db/MongoDev-00_Sh_1_4/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "MongoDev-00_Sh_1_5", 
+            "hostname": "US1-AIRMGS-D01.ec2.local", 
+            "disabled": false, 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12-ent", 
+            "args2_6": {
+                "replication": {
+                    "replSetName": "Sh_1"
+                }, 
+                "net": {
+                    "ssl": {
+                        "PEMKeyFile": "/etc/ssl/mongodb/star.ec2.local.pem", 
+                        "mode": "allowSSL", 
+                        "PEMKeyPassword": "Welcome!23"
+                    }, 
+                    "port": 27018
+                }, 
+                "storage": {
+                    "dbPath": "/db/MongoDev-00_Sh_1_5"
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/db/MongoDev-00_Sh_1_5/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "ConfigRS-Dev00_6", 
+            "hostname": "US1-AIRMGD-D02.ec2.local", 
+            "disabled": false, 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12-ent", 
+            "args2_6": {
+                "storage": {
+                    "wiredTiger": {
+                        "engineConfig": {
+                            "cacheSizeGB": 1.0
+                        }
+                    }, 
+                    "dbPath": "/db/ConfigRS-Dev00_6"
+                }, 
+                "operationProfiling": {}, 
+                "replication": {
+                    "replSetName": "ConfigRS-Dev00"
+                }, 
+                "systemLog": {
+                    "path": "/db/ConfigRS-Dev00_6/mongodb.log", 
+                    "destination": "file"
+                }, 
+                "sharding": {
+                    "clusterRole": "configsvr"
+                }, 
+                "net": {
+                    "ssl": {
+                        "PEMKeyFile": "/etc/ssl/mongodb/star.ec2.local.pem", 
+                        "mode": "allowSSL", 
+                        "PEMKeyPassword": "Welcome!23"
+                    }, 
+                    "port": 27023
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "ConfigRS-Dev00_7", 
+            "hostname": "US1-AIRMGD-D04.ec2.local", 
+            "disabled": false, 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12-ent", 
+            "args2_6": {
+                "storage": {
+                    "wiredTiger": {
+                        "engineConfig": {
+                            "cacheSizeGB": 1.0
+                        }
+                    }, 
+                    "dbPath": "/db/ConfigRS-Dev00_7"
+                }, 
+                "operationProfiling": {}, 
+                "replication": {
+                    "replSetName": "ConfigRS-Dev00"
+                }, 
+                "systemLog": {
+                    "path": "/db/ConfigRS-Dev00_7/mongodb.log", 
+                    "destination": "file"
+                }, 
+                "sharding": {
+                    "clusterRole": "configsvr"
+                }, 
+                "net": {
+                    "ssl": {
+                        "PEMKeyFile": "/etc/ssl/mongodb/star.ec2.local.pem", 
+                        "mode": "allowSSL", 
+                        "PEMKeyPassword": "Welcome!23"
+                    }, 
+                    "port": 27023
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "ConfigRS-Dev00_8", 
+            "hostname": "US1-AIRMGS-D01.ec2.local", 
+            "disabled": false, 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12-ent", 
+            "args2_6": {
+                "storage": {
+                    "dbPath": "/db/ConfigRS-Dev00_8"
+                }, 
+                "operationProfiling": {}, 
+                "replication": {
+                    "replSetName": "ConfigRS-Dev00"
+                }, 
+                "systemLog": {
+                    "path": "/db/ConfigRS-Dev00_8/mongodb.log", 
+                    "destination": "file"
+                }, 
+                "sharding": {
+                    "clusterRole": "configsvr"
+                }, 
+                "net": {
+                    "ssl": {
+                        "PEMKeyFile": "/etc/ssl/mongodb/star.ec2.local.pem", 
+                        "mode": "allowSSL", 
+                        "PEMKeyPassword": "Welcome!23"
+                    }, 
+                    "port": 27023
+                }
+            }, 
+            "processType": "mongod"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "MongoDev-00_mongos_9", 
+            "hostname": "US1-AIRMGS-D01.ec2.local", 
+            "disabled": false, 
+            "cluster": "MongoDev-00", 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12-ent", 
+            "args2_6": {
+                "net": {
+                    "ssl": {
+                        "PEMKeyFile": "/etc/ssl/mongodb/star.ec2.local.pem", 
+                        "mode": "allowSSL", 
+                        "PEMKeyPassword": "Welcome!23"
+                    }, 
+                    "port": 27017
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/db/MongoDev-00_mongos_9/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongos"
+        }, 
+        {
+            "authSchemaVersion": 5, 
+            "name": "MongoDev-00_mongos_10", 
+            "hostname": "US1-AIRMGS-D02.ec2.local", 
+            "disabled": false, 
+            "cluster": "MongoDev-00", 
+            "logRotate": {
+                "timeThresholdHrs": 24, 
+                "sizeThresholdMB": 1000.0
+            }, 
+            "version": "3.2.12-ent", 
+            "args2_6": {
+                "net": {
+                    "ssl": {
+                        "PEMKeyFile": "/etc/ssl/mongodb/star.ec2.local.pem", 
+                        "mode": "allowSSL", 
+                        "PEMKeyPassword": "Welcome!23"
+                    }, 
+                    "port": 27017
+                }, 
+                "operationProfiling": {}, 
+                "systemLog": {
+                    "path": "/db/MongoDev-00_mongos_10/mongodb.log", 
+                    "destination": "file"
+                }
+            }, 
+            "processType": "mongos"
+        }
+    ], 
+    "indexConfigs": [], 
+    "roles": [
+        {
+            "role": "queryinsert_machinedata", 
+            "privileges": [
+                {
+                    "resource": {
+                        "db": "machinedata_dev04", 
+                        "collection": "diag_logs_faults"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev04", 
+                        "collection": "therapy_settings_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev04", 
+                        "collection": "summary_data_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev04", 
+                        "collection": "summary_data_ts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev04", 
+                        "collection": "momo_1m_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev04", 
+                        "collection": "momo_1m_ts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev04", 
+                        "collection": "device_details_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }
+            ], 
+            "db": "machinedata_dev04", 
+            "roles": []
+        }, 
+        {
+            "role": "queryinsert_machinedata", 
+            "privileges": [
+                {
+                    "resource": {
+                        "db": "machinedata_dev03", 
+                        "collection": "diag_logs_faults"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev03", 
+                        "collection": "therapy_settings_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev03", 
+                        "collection": "summary_data_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev03", 
+                        "collection": "summary_data_ts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev03", 
+                        "collection": "momo_1m_ts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev03", 
+                        "collection": "momo_1m_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev03", 
+                        "collection": "device_details_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }
+            ], 
+            "db": "machinedata_dev03", 
+            "roles": []
+        }, 
+        {
+            "role": "queryinsert_machinedata", 
+            "privileges": [
+                {
+                    "resource": {
+                        "db": "machinedata_dev12", 
+                        "collection": "diag_logs_faults"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev12", 
+                        "collection": "therapy_settings_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev12", 
+                        "collection": "summary_data_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev12", 
+                        "collection": "summary_data_ts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev12", 
+                        "collection": "momo_1m_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev12", 
+                        "collection": "momo_1m_ts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev12", 
+                        "collection": "device_details_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }
+            ], 
+            "db": "machinedata_dev12", 
+            "roles": []
+        }, 
+        {
+            "role": "queryinsert_machinedata", 
+            "privileges": [
+                {
+                    "resource": {
+                        "db": "machinedata_dev18", 
+                        "collection": "diag_logs_faults"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev18", 
+                        "collection": "therapy_settings_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev18", 
+                        "collection": "summary_data_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev18", 
+                        "collection": "summary_data_ts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev18", 
+                        "collection": "momo_1m_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev18", 
+                        "collection": "momo_1m_ts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev18", 
+                        "collection": "device_details_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }
+            ], 
+            "db": "machinedata_dev18", 
+            "roles": []
+        }, 
+        {
+            "role": "queryinsert_machinedata", 
+            "privileges": [
+                {
+                    "resource": {
+                        "db": "machinedata_dev00", 
+                        "collection": "diag_logs_faults"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev00", 
+                        "collection": "device_details_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev00", 
+                        "collection": "therapy_settings_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev00", 
+                        "collection": "summary_data_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev00", 
+                        "collection": "summary_data_ts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev00", 
+                        "collection": "momo_1m_lts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }, 
+                {
+                    "resource": {
+                        "db": "machinedata_dev00", 
+                        "collection": "momo_1m_ts"
+                    }, 
+                    "actions": [
+                        "find", 
+                        "insert", 
+                        "remove", 
+                        "update"
+                    ]
+                }
+            ], 
+            "db": "machinedata_dev00", 
+            "roles": []
+        }
+    ], 
+    "monitoringVersions": [
+        {
+            "directoryUrl": null, 
+            "hostname": "US1-AIRMGS-D01.ec2.local", 
+            "baseUrl": null, 
+            "name": "5.4.3.361-1"
+        }
+    ], 
+    "auth": {
+        "usersDeleted": [], 
+        "autoUser": "mms-automation", 
+        "usersWanted": [
+            {
+                "initPwd": "e8a33f5ce11abde956765f58fd937efb", 
+                "db": "admin", 
+                "user": "mms-monitoring-agent", 
+                "roles": [
+                    {
+                        "role": "clusterMonitor", 
+                        "db": "admin"
+                    }
+                ]
+            }, 
+            {
+                "initPwd": "ce1de70e090667f1fd1e3c9fccab68ab", 
+                "db": "admin", 
+                "user": "mms-backup-agent", 
+                "roles": [
+                    {
+                        "role": "clusterAdmin", 
+                        "db": "admin"
+                    }, 
+                    {
+                        "role": "readAnyDatabase", 
+                        "db": "admin"
+                    }, 
+                    {
+                        "role": "userAdminAnyDatabase", 
+                        "db": "admin"
+                    }, 
+                    {
+                        "role": "readWrite", 
+                        "db": "local"
+                    }, 
+                    {
+                        "role": "readWrite", 
+                        "db": "admin"
+                    }
+                ]
+            }, 
+            {
+                "initPwd": "a6de521abefc2fed4f5876855a3484f5", 
+                "db": "admin", 
+                "user": "test", 
+                "roles": [
+                    {
+                        "role": "root", 
+                        "db": "admin"
+                    }
+                ]
+            }, 
+            {
+                "initPwd": "e3c4cdae5c5a83823517eb2096caf769", 
+                "db": "machinedata_dev00", 
+                "user": "machinedata_dev00", 
+                "roles": [
+                    {
+                        "role": "queryinsert_machinedata", 
+                        "db": "machinedata_dev00"
+                    }
+                ]
+            }, 
+            {
+                "initPwd": "107b5e70260ac7854582de58c2fe2fb2", 
+                "db": "machinedata_dev04", 
+                "user": "machinedata_dev04", 
+                "roles": [
+                    {
+                        "role": "queryinsert_machinedata", 
+                        "db": "machinedata_dev04"
+                    }
+                ]
+            }, 
+            {
+                "initPwd": "ec1c4cb7571c6ebba94d28c304dbd3de", 
+                "db": "machinedata_dev03", 
+                "user": "machinedata_dev03", 
+                "roles": [
+                    {
+                        "role": "queryinsert_machinedata", 
+                        "db": "machinedata_dev03"
+                    }
+                ]
+            }, 
+            {
+                "initPwd": "7b60e8be67ccffeaf2be61908d11aa4d", 
+                "db": "machinedata_dev12", 
+                "user": "machinedata_dev12", 
+                "roles": [
+                    {
+                        "role": "queryinsert_machinedata", 
+                        "db": "machinedata_dev12"
+                    }
+                ]
+            }, 
+            {
+                "initPwd": "3336d7dd02860d14fa1603da5b1df735", 
+                "db": "machinedata_dev18", 
+                "user": "machinedata_dev18", 
+                "roles": [
+                    {
+                        "role": "queryinsert_machinedata", 
+                        "db": "machinedata_dev18"
+                    }
+                ]
+            }, 
+            {
+                "initPwd": "596a3ecac5135e47df053c104973c8e1", 
+                "db": "machinedata_dev23", 
+                "user": "machinedata_dev23", 
+                "roles": [
+                    {
+                        "role": "readWrite", 
+                        "db": "machinedata_dev23"
+                    }
+                ]
+            }, 
+            {
+                "initPwd": "d3b507cba176a393bd1c63af46ca1d27", 
+                "db": "admin", 
+                "user": "admin_dev", 
+                "roles": [
+                    {
+                        "role": "readWriteAnyDatabase", 
+                        "db": "admin"
+                    }
+                ]
+            }
+        ], 
+        "keyfileWindows": "%SystemDrive%\\MMSAutomation\\versions\\keyfile", 
+        "disabled": false, 
+        "deploymentAuthMechanisms": [
+            "MONGODB-CR", 
+            "PLAIN"
+        ], 
+        "autoPwd": "LE6U0tU77OENRGIeALMi6DRc", 
+        "key": "GFbzljGW8eMVmsSaZfNI1T3SFsIwFlUXJmog7wLXb1dwG1cTs40nQJP2M0wdWRzbhRD5xSY7g6K5Yilo5xPUuPyDzqfmeaxCiu2mMnktZvhB3SckiB6GB5nXZL3i9n3JUXT8IGMCwLZLTsgHrffTPeW24t5u4WOYMAQqo0ymHprdtMngS48NEhes5mJhXpqffVcZMghtx9gWDHH2fpFSJqNjxieDnSzYQ4NAzTMqrbKoSggsqx02d699ytcuvfrad61X3jsBqWVtF0uiVRakJtvqtevkWuUyElYP29Er6rj3RIboVzAquCVxacxZmAxq0NQcCR6Lrh9QOgiEIXAyvhBkwIH1w53oBQD51zPac8yE9o1qti8zVlPltauMaUavTGorxojvEV8xk6NDgFHwjrwxaYROmMhMOKMP7PZ6MuO8YxF7uOPu6bz3mSMn3JUigUUuLOpwtATS8EFnAo6QPQa6e8W06dgkjnN4yndnytmzasG4sz290G8oFMfGSPBqFp26EoXvc7kVUP4qmicmM6qL37qq9gvgh2S1cLndRTSf84TKp90GCORCjAi4iTVFlyjB6KfJ7Gr3bxomeBWBBL99OzKoX4EB1kcfwcYk9n5VB24tMPcfrQg7Oct077S9GEg5mz9jOQhN6kda1i5uN4y0ErXNkgzeSGbUcIjNZmICOR7g5dQY7hvaoTFpjx4qYlIGGMI9waEhRUx4qyLyLFpYYd9VivIIxJU16csFedvkDp3hcRixMG0342KdPtJ5jOqOQsson4haQiY0mvERY21idHEhhSt6HBjwpJm8Uzbu3NBhFUkyL9aSQcJa5G9vUAvmUxO1ZdunNToli8rtQmEYD88ExQtO1p79stMBP2Om2MQZlEtJqRUQKeXtafuVUEvraUCh4TwjTIZZzz44Ah1tXIIkuHBMK0wG36BligY7QZmAM7bdnoBtekGrMVRBTwTb957NJ5S4Xkfp0E5mmiRp21Fs44rVx0eky18QsH2YV1TTlk6rZwCX7quktgWa", 
+        "authoritativeSet": true, 
+        "keyfile": "/var/lib/mongodb-mms-automation/keyfile"
+    }, 
+    "ssl": {
+        "autoPEMKeyFilePwd": "Welcome!23", 
+        "clientCertificateMode": "OPTIONAL", 
+        "CAFilePath": "/etc/ssl/mongodb/Americas-Root-CA.cer", 
+        "autoPEMKeyFilePath": "/etc/ssl/mongodb/star.ec2.local.pem"
+    }, 
+    "version": 115, 
+    "sharding": [
+        {
+            "name": "MongoDev-00", 
+            "tags": [], 
+            "shards": [
+                {
+                    "_id": "Sh_0", 
+                    "tags": [], 
+                    "rs": "Sh_0"
+                }, 
+                {
+                    "_id": "Sh_1", 
+                    "tags": [], 
+                    "rs": "Sh_1"
+                }
+            ], 
+            "configServerReplica": "ConfigRS-Dev00", 
+            "collections": [], 
+            "managedSharding": false
+        }
+    ], 
+    "mongoDbVersions": [
+        {
+            "builds": [
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.2.11.tgz", 
+                    "platform": "linux", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel55-3.2.11.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "6.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "5.5", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel62-3.2.11.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "7.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "6.2", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-3.2.11.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "8.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "7.0", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-suse11-3.2.11.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "12.0", 
+                    "flavor": "suse", 
+                    "bits": 64, 
+                    "minOsVersion": "11.0", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-suse12-3.2.11.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "13.0", 
+                    "flavor": "suse", 
+                    "bits": 64, 
+                    "minOsVersion": "12.0", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-debian71-3.2.11.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "8.0", 
+                    "flavor": "debian", 
+                    "bits": 64, 
+                    "minOsVersion": "7.1", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1204-3.2.11.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "13.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "12.04", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-3.2.11.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "15.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "14.04", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1604-3.2.11.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "17.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "16.04", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-amazon-3.2.11.tgz", 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "", 
+                    "flavor": "amazon", 
+                    "bits": 64, 
+                    "minOsVersion": "2013.03", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/osx/mongodb-osx-x86_64-3.2.11.tgz", 
+                    "platform": "osx", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-3.2.11.zip", 
+                    "platform": "windows", 
+                    "bits": 64, 
+                    "architecture": "amd64", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "win2008plus": true, 
+                    "url": "https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-3.2.11.zip", 
+                    "platform": "windows", 
+                    "architecture": "amd64", 
+                    "bits": 64, 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }
+            ], 
+            "name": "3.2.11"
+        }, 
+        {
+            "builds": [
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-amzn64-3.2.11.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "", 
+                    "flavor": "amazon", 
+                    "bits": 64, 
+                    "minOsVersion": "2013.03", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-rhel57-3.2.11.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "6.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "5.7", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-rhel62-3.2.11.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "7.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "6.2", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-rhel70-3.2.11.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "8.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "7.0", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-suse11-3.2.11.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "12.0", 
+                    "flavor": "suse", 
+                    "bits": 64, 
+                    "minOsVersion": "11.0", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-suse12-3.2.11.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "13.0", 
+                    "flavor": "suse", 
+                    "bits": 64, 
+                    "minOsVersion": "12.0", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-ubuntu1204-3.2.11.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "13.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "12.04", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-ubuntu1404-3.2.11.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "15.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "14.04", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-debian71-3.2.11.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "8.0", 
+                    "flavor": "debian", 
+                    "bits": 64, 
+                    "minOsVersion": "7.1", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-ubuntu1604-3.2.11.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "17.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "16.04", 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/osx/mongodb-osx-x86_64-enterprise-3.2.11.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "osx", 
+                    "architecture": "amd64", 
+                    "bits": 64, 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }, 
+                {
+                    "winVCRedistUrl": "http://download.microsoft.com/download/2/E/6/2E61CFA4-993B-4DD4-91DA-3737CD5CD6E3/vcredist_x64.exe", 
+                    "winVCRedistDll": "msvcr120.dll", 
+                    "win2008plus": true, 
+                    "url": "https://downloads.mongodb.com/win32/mongodb-win32-x86_64-enterprise-windows-64-3.2.11.zip", 
+                    "winVCRedistOptions": [
+                        "/quiet", 
+                        "/norestart"
+                    ], 
+                    "winVCRedistVersion": "12.0.21005.1", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "windows", 
+                    "architecture": "amd64", 
+                    "bits": 64, 
+                    "gitVersion": "009580ad490190ba33d1c6253ebd8d91808923e4"
+                }
+            ], 
+            "name": "3.2.11-ent"
+        }, 
+        {
+            "builds": [
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-amzn64-3.2.12.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "", 
+                    "flavor": "amazon", 
+                    "bits": 64, 
+                    "minOsVersion": "2013.03", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-rhel57-3.2.12.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "6.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "5.7", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-rhel62-3.2.12.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "7.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "6.2", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-rhel70-3.2.12.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "8.0", 
+                    "flavor": "rhel", 
+                    "bits": 64, 
+                    "minOsVersion": "7.0", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-suse11-3.2.12.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "12.0", 
+                    "flavor": "suse", 
+                    "bits": 64, 
+                    "minOsVersion": "11.0", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-suse12-3.2.12.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "13.0", 
+                    "flavor": "suse", 
+                    "bits": 64, 
+                    "minOsVersion": "12.0", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-ubuntu1204-3.2.12.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "13.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "12.04", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-ubuntu1404-3.2.12.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "15.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "14.04", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-debian71-3.2.12.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "8.0", 
+                    "flavor": "debian", 
+                    "bits": 64, 
+                    "minOsVersion": "7.1", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/linux/mongodb-linux-x86_64-enterprise-ubuntu1604-3.2.12.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "linux", 
+                    "architecture": "amd64", 
+                    "maxOsVersion": "17.04", 
+                    "flavor": "ubuntu", 
+                    "bits": 64, 
+                    "minOsVersion": "16.04", 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "url": "https://downloads.mongodb.com/osx/mongodb-osx-x86_64-enterprise-3.2.12.tgz", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "osx", 
+                    "architecture": "amd64", 
+                    "bits": 64, 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }, 
+                {
+                    "winVCRedistUrl": "http://download.microsoft.com/download/2/E/6/2E61CFA4-993B-4DD4-91DA-3737CD5CD6E3/vcredist_x64.exe", 
+                    "winVCRedistDll": "msvcr120.dll", 
+                    "win2008plus": true, 
+                    "url": "https://downloads.mongodb.com/win32/mongodb-win32-x86_64-enterprise-windows-64-3.2.12.zip", 
+                    "winVCRedistOptions": [
+                        "/quiet", 
+                        "/norestart"
+                    ], 
+                    "winVCRedistVersion": "12.0.21005.1", 
+                    "modules": [
+                        "enterprise"
+                    ], 
+                    "platform": "windows", 
+                    "architecture": "amd64", 
+                    "bits": 64, 
+                    "gitVersion": "ef3e1bc78e997f0d9f22f45aeb1d8e3b6ac14a14"
+                }
+            ], 
+            "name": "3.2.12-ent"
+        }
+    ], 
+    "replicaSets": [
+        {
+            "_id": "Sh_0", 
+            "members": [
+                {
+                    "votes": 1, 
+                    "arbiterOnly": false, 
+                    "slaveDelay": 0, 
+                    "priority": 2.0, 
+                    "host": "MongoDev-00_Sh_0_0", 
+                    "hidden": false, 
+                    "_id": 0
+                }, 
+                {
+                    "votes": 1, 
+                    "arbiterOnly": false, 
+                    "slaveDelay": 0, 
+                    "priority": 1.0, 
+                    "host": "MongoDev-00_Sh_0_1", 
+                    "hidden": false, 
+                    "_id": 1
+                }, 
+                {
+                    "votes": 1, 
+                    "arbiterOnly": true, 
+                    "slaveDelay": 0, 
+                    "priority": 0.0, 
+                    "host": "MongoDev-00_Sh_0_2", 
+                    "hidden": false, 
+                    "_id": 2
+                }
+            ]
+        }, 
+        {
+            "_id": "Sh_1", 
+            "members": [
+                {
+                    "votes": 1, 
+                    "arbiterOnly": false, 
+                    "slaveDelay": 0, 
+                    "priority": 1.0, 
+                    "host": "MongoDev-00_Sh_1_3", 
+                    "hidden": false, 
+                    "_id": 0
+                }, 
+                {
+                    "votes": 1, 
+                    "arbiterOnly": false, 
+                    "slaveDelay": 0, 
+                    "priority": 2.0, 
+                    "host": "MongoDev-00_Sh_1_4", 
+                    "hidden": false, 
+                    "_id": 1
+                }, 
+                {
+                    "votes": 1, 
+                    "arbiterOnly": true, 
+                    "slaveDelay": 0, 
+                    "priority": 0.0, 
+                    "host": "MongoDev-00_Sh_1_5", 
+                    "hidden": false, 
+                    "_id": 2
+                }
+            ]
+        }, 
+        {
+            "_id": "ConfigRS-Dev00", 
+            "members": [
+                {
+                    "votes": 1, 
+                    "arbiterOnly": false, 
+                    "slaveDelay": 0, 
+                    "priority": 1.0, 
+                    "host": "ConfigRS-Dev00_6", 
+                    "hidden": false, 
+                    "_id": 0
+                }, 
+                {
+                    "votes": 1, 
+                    "arbiterOnly": false, 
+                    "slaveDelay": 0, 
+                    "priority": 1.0, 
+                    "host": "ConfigRS-Dev00_7", 
+                    "hidden": false, 
+                    "_id": 1
+                }, 
+                {
+                    "votes": 1, 
+                    "arbiterOnly": false, 
+                    "slaveDelay": 0, 
+                    "priority": 1.0, 
+                    "host": "ConfigRS-Dev00_8", 
+                    "hidden": false, 
+                    "_id": 2
+                }
+            ]
+        }
+    ], 
+    "options": {
+        "downloadBase": "/var/lib/mongodb-mms-automation", 
+        "downloadBaseWindows": "%SystemDrive%\\MMSAutomation\\versions"
+    }, 
+    "backupVersions": []
+}
