@@ -11,6 +11,7 @@ class ApiBase:
         self.group_id = group_id
         self.api_user = api_user
         self.api_key = api_key
+        requests.packages.urllib3.disable_warnings()
 
     def get(self, url):
         logging.info("Executing GET: %s" % url)
@@ -62,6 +63,7 @@ class ApiBase:
         return r.json()
 
     def check_response(self, r):
+        logging.info("Status code: %s" % r.status_code)
         if r.status_code not in [requests.codes.ok, 202]:
             logging.error("Response Error Code: %s Detail: %s" % (r.status_code, r.json()['detail']))
             raise ValueError(r.json()['detail'])

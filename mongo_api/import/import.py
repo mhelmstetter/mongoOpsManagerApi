@@ -10,31 +10,6 @@ import fcntl
 import errno
 import time
 
-# LaSpina - added file locking mechanism to prevent multiple scripts from running
-class FileLock:
-    def __init__(self, filename=None):
-        self.filename = './MONGODB_AUTOMATION_LOCK_FILE' if filename is None else filename
-        self.lock_file = open(self.filename, 'w+')
-
-    def unlock(self):
-        fcntl.flock(self.lock_file, fcntl.LOCK_UN)
-
-    def lock(self, maximum_wait=10):
-        waited = 0
-        while True:
-            try:
-                fcntl.flock(self.lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
-                print ("file locked")
-                return True
-            except IOError as e:
-                if e.errno != errno.EAGAIN:
-                    raise e
-                else:
-                    time.sleep(1)
-                    waited += 1
-                    if waited >= maximum_wait:
-                        return False
-
 
 processTemplate = {
     "authSchemaVersion": 5,
@@ -102,15 +77,6 @@ monitoringVersion = {
         }
 
 
-def getAutomationConfig():
-    response = requests.get(automationConfigEndpoint
-            ,auth=HTTPDigestAuth(args.username,args.apiKey), verify=False)
-    response.raise_for_status()
-    #print "Result %s %s" % (response.status_code,response.reason)
-    #print(response.headers)
-    #print(response.content)
-    return response.json()
-
 def getHosts():
     response = requests.get(hostsEndpoint
             ,auth=HTTPDigestAuth(args.username,args.apiKey), verify=False)
@@ -119,11 +85,6 @@ def getHosts():
     #print(response.headers)
     #print(response.content)
     return response.json()
-
-def printAutomationConfig():
-    config = getAutomationConfig()
-    configStr = json.dumps(config, indent=4)
-    print(configStr)
 
 def removeNoTablescan(cmdLine):
     notablescan = cmdLine.get("setParameter", {}).get("notablescan")
@@ -322,35 +283,8 @@ def __delete(host_id):
     else:
         response.raise_for_status()
 
-def __post_automation_config(automation_config):
-    configStr = json.dumps(automation_config, indent=4)
-    print(configStr)
-
-    response = requests.put(automationConfigEndpoint,
-                auth=HTTPDigestAuth(args.username,args.apiKey),
-                data=json.dumps(automation_config),
-                headers=headers,
-                verify=False)
-
-    print "Result %s %s" % (response.status_code,response.reason)
-
-    if (response.status_code != requests.codes.created):
-        print "ERROR %s %s" % (response.status_code,response.reason)
-        print(response.headers)
-        print(response.content)
-    else:
-        response.raise_for_status()
 
 
-#
-# main
-#
-
-headers = { "Content-Type" : "application/json" }
-disabled = { "enabled" : "false" }
-enabled = { "enabled" : "true" }
-
-requests.packages.urllib3.disable_warnings()
 
 parser = argparse.ArgumentParser(description="Import existing MongoDB clusters into Ops/Cloud Manager")
 
@@ -410,17 +344,4 @@ args = parser.parse_args()
 if args.action is None:
     parser.parse_args(['-h'])
 
-fl = FileLock()
-if not fl.lock(int(args.waitForLock) if args.waitForLock is not None else 10):
-    print ("Could not obtain process lock - exiting")
-    sys.exit(1)
-
-alertConfigsEndpoint = args.host +"/api/public/v1.0/groups/" + args.group +"/alertConfigs"
-hostsEndpoint = args.host +"/api/public/v1.0/groups/" + args.group +"/hosts"
-automationConfigEndpoint = args.host +"/api/public/v1.0/groups/" + args.group +"/automationConfig"
-
-# based on the argument passed, this will call the "const" function from the parser config
-# e.g. --disableAlertConfigs argument will call disableAlerts()
 args.action()
-
-fl.unlock()

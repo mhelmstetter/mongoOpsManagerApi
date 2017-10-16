@@ -6,12 +6,17 @@ from api_base import ApiBase
 
 class AutomationApiBase(ApiBase):
 
-    def __init__(self, base_url, machine_hostname, group_id, api_user, api_key):
+    def __init__(self, base_url, group_id, api_user, api_key):
         ApiBase.__init__(self, base_url, group_id, api_user, api_key)
-        self.machine_hostname = machine_hostname
+        #self.machine_hostname = machine_hostname
 
     def clean(self):
         self.post_automation_config("configs/api_0_clean.json")
+
+    def printAutomationConfig():
+        config = getAutomationConfig()
+        configStr = json.dumps(config, indent=4)
+        print(configStr)
 
     def wait_for_goal_state(self):
 
