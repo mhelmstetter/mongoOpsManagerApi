@@ -112,7 +112,8 @@ def _get_restore_job_result(group_id, cluster_id, job_id=None, batch_id=None):
     if batch_id:
         url = "%s?batchId=%s" % (url, batch_id)
 
-    #print "_get_restore_job_result: " + url
+    logging.info("_get_restore_job_result url: %s" % url)
+
     response = get(url)
     return response
 
@@ -144,13 +145,16 @@ def printSnapshots():
         print "%s  %s" % (snapshot['id'], snapshot['created']['date'])
 
 def get_cluster_info(group_id, cluster_name):
+    logging.info("get_cluster_info: cluster_name " + cluster_name + ", group_id " + group_id)
     cluster_info = {}
     sets = []
     csrs = None
     url = "%s/api/public/v1.0/groups/%s/clusters" % (args.host, group_id)
     response = get(url)
+    print(response)
     for cluster in response['results']:
-        if cluster['clusterName'] == cluster_name and cluster['typeName'] == 'REPLICA_SET':
+        print(cluster['clusterName'])
+        if (cluster['clusterName'] == cluster_name or cluster['replicaSetName'] == cluster_name) and cluster['typeName'] == 'REPLICA_SET':
             sets.append(cluster['replicaSetName'])
         elif cluster['clusterName'] == cluster_name and cluster['typeName'] == 'CONFIG_SERVER_REPLICA_SET':
             csrs = cluster['replicaSetName']
@@ -172,12 +176,13 @@ def restore():
 
     snapshot_id = args.snapshotId
     restore_job_response = request_restore_http_replica_set(args.group, cluster_id, snapshot_id, 6, 1)
-
+    print(restore_job_response)
     restore_job = restore_job_response['results'][0]
 
-    batch_id = restore_job['batchId']
+    batch_id = restore_job.get('batchId', None)
+
     batch_count = restore_job_response['totalCount']
-    logging.debug("batchId " + batch_id)
+    logging.info("batchId: %s" % batch_id)
     restore_links = {}
 
 
@@ -219,6 +224,8 @@ def restore():
     for process in automation_config['processes']:
         if process['processType'] == 'mongod':
             rName = process['args2_6']['replication']['replSetName']
+            print "rName " + rName
+
             mappedName = None
             if rName in dest_cluster_info['sets']:
                 i = dest_cluster_info['sets'].index(rName)
@@ -228,7 +235,8 @@ def restore():
                 mappedName = source_cluster_info['configRsName']
                 print(rName + " -> " + mappedName)
             else:
-                print "**** rName" + rName + " not found"
+                print "**** rName " + rName + " not found"
+                sys.exit(2)
             link = restore_links[mappedName]
             process['backupRestoreUrl'] = link
 
