@@ -16,6 +16,7 @@ class DbLock:
 
     def unlock(self):
         self.db.opsManagerLock.delete_one({'_id': 'lock'})
+        logging.info("DbLock lock released")
 
     def lock(self):
         waited = 0
