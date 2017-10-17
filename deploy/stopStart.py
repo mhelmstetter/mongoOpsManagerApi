@@ -35,12 +35,22 @@ class FileLock:
                     if waited >= maximum_wait:
                         return False
 
+def fixNoTablescan(config):
+    for process in config.get('processes', None):
+        notable_opt = process.get("args2_6", {}).get("setParameter", {}).get("notablescan")
+        if notable_opt != None and (notable_opt == "false" or notable_opt == "true") :
+            if notable_opt == "false":
+               process['args2_6']['setParameter']['notablescan'] = False
+            else:
+                process['args2_6']['setParameter']['notablescan'] = True
 
 def getAutomationConfig():
     response = requests.get(automationConfigEndpoint
             ,auth=HTTPDigestAuth(args.username,args.apiKey), verify=False)
     response.raise_for_status()
-    return response.json()
+    new_config = copy.deepcopy(response.json())
+    fixNoTablescan(new_config)
+    return new_config
 
 def printAutomationConfig():
     config = getAutomationConfig()
@@ -99,7 +109,7 @@ def __startStopHost(disabledState):
         fl.unlock()
         sys.exit(1)
 
-    
+
 
 def stopHost():
     __startStopHost(True)
@@ -158,6 +168,9 @@ actionsParser.add_argument("--stopHost",dest='action', action='store_const'
 actionsParser.add_argument("--startHost",dest='action', action='store_const'
         ,const=startHost
         ,help='Start monogd on specified host')
+actionsParser.add_argument("--printAutomationConfig",dest='action', action='store_const'
+        ,const=printAutomationConfig
+        ,help='Get Automation Config')
 
 
 optionsParser = parser.add_argument_group('options')
@@ -199,6 +212,5 @@ port = hostPort[1]
 # based on the argument passed, this will call the "const" function from the parser config
 # e.g. --disableAlertConfigs argument will call disableAlerts()
 args.action()
-time.sleep(30)
 
 fl.unlock()
