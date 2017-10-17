@@ -6,8 +6,35 @@ import sys
 import copy
 from pymongo import MongoClient
 from bson.json_util import dumps
+import fcntl
+import errno
 import time
-from lib import filelock
+
+# LaSpina - added file locking mechanism to prevent multiple scripts from running
+class FileLock:
+    def __init__(self, filename=None):
+        self.filename = './MONGODB_AUTOMATION_LOCK_FILE' if filename is None else filename
+        self.lock_file = open(self.filename, 'w+')
+
+    def unlock(self):
+        fcntl.flock(self.lock_file, fcntl.LOCK_UN)
+
+    def lock(self, maximum_wait=10):
+        waited = 0
+        while True:
+            try:
+                fcntl.flock(self.lock_file, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                print ("file locked")
+                return True
+            except IOError as e:
+                if e.errno != errno.EAGAIN:
+                    raise e
+                else:
+                    time.sleep(1)
+                    waited += 1
+                    if waited >= maximum_wait:
+                        return False
+
 
 def getAutomationConfig():
     response = requests.get(automationConfigEndpoint
@@ -72,7 +99,7 @@ def __startStopHost(disabledState):
         fl.unlock()
         sys.exit(1)
 
-
+    
 
 def stopHost():
     __startStopHost(True)
@@ -153,7 +180,7 @@ args = parser.parse_args()
 if args.action is None:
     parser.parse_args(['-h'])
 
-fl = filelock.FileLock()
+fl = FileLock()
 if not fl.lock(int(args.waitForLock) if args.waitForLock is not None else 10):
     print ("Could not obtain process lock - exiting")
     sys.exit(1)
