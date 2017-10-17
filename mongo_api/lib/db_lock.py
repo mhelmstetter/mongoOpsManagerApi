@@ -22,10 +22,10 @@ class DbLock:
         while True:
             try:
                 result = self.db.opsManagerLock.insert({'_id': 'lock', "date": datetime.datetime.utcnow()})
-                logging.info("lock acquired")
+                logging.info("DbLock lock acquired")
                 return True
             except pymongo.errors.DuplicateKeyError as e:
-                logging.info("waiting for lock")
+                logging.info("DbLock waiting for lock")
                 time.sleep(5)
                 waited += 5
                 if waited >= self.maximum_wait:

@@ -7,29 +7,29 @@ logging.basicConfig(
 logging.getLogger("requests").setLevel(logging.WARNING)
 
 def stopHost():
-    target = StopStart(args.base_url, args.group_id, args.api_user, args.api_key,
+    target = StopStart(args.host, args.group, args.username, args.apiKey,
                        args.hostPort, args.rsUser, args.rsPassword, args.lock_mongo_uri)
     target.stopHost()
 
 
 def startHost():
-    target = StopStart(args.base_url, args.group_id, args.api_user, args.api_key,
+    target = StopStart(args.host, args.group, args.username, args.apiKey,
                        args.hostPort, args.rsUser, args.rsPassword, args.lock_mongo_uri)
     target.startHost()
 
 parser = argparse.ArgumentParser(description="Manage users from MongoDB Ops/Cloud Manager")
 
 requiredNamed = parser.add_argument_group('required arguments')
-requiredNamed.add_argument("--base_url"
+requiredNamed.add_argument("--host"
         ,help='the OpsMgr host with protocol and port, e.g. http://server.com:8080'
         ,required=True)
-requiredNamed.add_argument("--group_id"
+requiredNamed.add_argument("--group"
         ,help='the OpsMgr group id'
         ,required=True)
-requiredNamed.add_argument("--api_user"
+requiredNamed.add_argument("--username"
         ,help='OpsMgr user name'
         ,required=True)
-requiredNamed.add_argument("--api_key"
+requiredNamed.add_argument("--apiKey"
         ,help='OpsMgr api key for the user'
         ,required=True)
 
