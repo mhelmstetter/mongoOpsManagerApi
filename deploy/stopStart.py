@@ -80,6 +80,26 @@ def waitForSecondary():
                 if stateStr in okStatus:
                     return
 
+def wait_for_goal_state():
+    count = 0
+    while True:
+        continue_to_wait = False
+        status = self.get_automation_status()
+        goal_version = status['goalVersion']
+
+        for process in status['processes']:
+            logging.info("Round: %s GoalVersion: %s Process: %s (%s) LastVersionAchieved: %s Plan: %s "
+                 % (count, goal_version, process['name'], process['hostname'], process['lastGoalVersionAchieved'], process['plan']))
+
+            if process['lastGoalVersionAchieved'] < goal_version:
+                continue_to_wait = True
+
+        if continue_to_wait:
+            time.sleep(5)
+        else:
+            logging.info("All processes in Goal State. GoalVersionAchieved: %s" % goal_version)
+            break
+        count += 1
 
 def __startStopHost(disabledState):
     config = getAutomationConfig()
