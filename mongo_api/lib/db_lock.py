@@ -15,7 +15,7 @@ class DbLock:
         self.maximum_wait = maximum_wait
 
     def unlock(self):
-        self.db.opsManagerLock.remove({'_id': 'lock'})
+        self.db.opsManagerLock.delete_one({'_id': 'lock'})
 
     def lock(self):
         waited = 0
