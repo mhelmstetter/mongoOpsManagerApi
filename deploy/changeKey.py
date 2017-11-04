@@ -7,12 +7,22 @@ import copy
 from pymongo import MongoClient
 from bson.json_util import dumps
 
+def fixNoTablescan(config):
+    for process in config.get('processes', None):
+        notable_opt = process.get("args2_6", {}).get("setParameter", {}).get("notablescan")
+        if notable_opt != None and (notable_opt == "false" or notable_opt == "true") :
+            if notable_opt == "false":
+               process['args2_6']['setParameter']['notablescan'] = False
+            else:
+                process['args2_6']['setParameter']['notablescan'] = True
 
 def getAutomationConfig():
     response = requests.get(automationConfigEndpoint
             ,auth=HTTPDigestAuth(args.username,args.apiKey), verify=False)
     response.raise_for_status()
-    return response.json()
+    new_config = copy.deepcopy(response.json())
+    fixNoTablescan(new_config)
+    return new_config
 
 def printAutomationConfig():
     config = getAutomationConfig()
