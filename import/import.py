@@ -102,14 +102,22 @@ monitoringVersion = {
         }
 
 
+def fixNoTablescan(config):
+    for process in config.get('processes', None):
+        notable_opt = process.get("args2_6", {}).get("setParameter", {}).get("notablescan")
+        if notable_opt != None and (notable_opt == "false" or notable_opt == "true") :
+            if notable_opt == "false":
+               process['args2_6']['setParameter']['notablescan'] = False
+            else:
+                process['args2_6']['setParameter']['notablescan'] = True
+
 def getAutomationConfig():
     response = requests.get(automationConfigEndpoint
             ,auth=HTTPDigestAuth(args.username,args.apiKey), verify=False)
     response.raise_for_status()
-    #print "Result %s %s" % (response.status_code,response.reason)
-    #print(response.headers)
-    #print(response.content)
-    return response.json()
+    new_config = copy.deepcopy(response.json())
+    fixNoTablescan(new_config)
+    return new_config
 
 def getHosts():
     response = requests.get(hostsEndpoint
@@ -124,11 +132,6 @@ def printAutomationConfig():
     config = getAutomationConfig()
     configStr = json.dumps(config, indent=4)
     print(configStr)
-
-def removeNoTablescan(cmdLine):
-    notablescan = cmdLine.get("setParameter", {}).get("notablescan")
-    if notablescan is not None:
-        del cmdLine['setParameter']['notablescan']
 
 
 def importReplicaSet():
@@ -165,7 +168,6 @@ def importReplicaSet():
     db.authenticate(args.rsUser, args.rsPassword)
     conf = db.command("replSetGetConfig").get("config", None)
     cmdLine = db.command("getCmdLineOpts", {}).get("parsed", None)
-    removeNoTablescan(cmdLine)
 
     params = db.command({"getParameter":"*"})
 
