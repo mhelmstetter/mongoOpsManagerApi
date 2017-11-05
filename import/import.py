@@ -233,7 +233,6 @@ def importReplicaSet():
                 db.authenticate(args.rsUser, args.rsPassword)
                 cmdLine = copy.deepcopy(db.command("getCmdLineOpts").get("parsed", None))
                 arbConfig = copy.deepcopy(cmdLine)
-                removeNoTablescan(cmdLine)
                 buildInfo = db.command("buildinfo")
             else:
                 # Don't authenticate for arbiter, AND arbiter must be localhost
