@@ -324,6 +324,7 @@ def __delete(host_id):
         response.raise_for_status()
 
 def __post_automation_config(automation_config):
+    fixNoTablescan(automation_config)
     configStr = json.dumps(automation_config, indent=4)
     print(configStr)
 
