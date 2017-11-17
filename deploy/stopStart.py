@@ -4,11 +4,17 @@ import json
 import argparse
 import sys
 import copy
-from pymongo import MongoClient
+import pymongo
 from bson.json_util import dumps
 import fcntl
 import errno
 import time
+import datetime
+import logging
+
+logging.basicConfig(
+    level=logging.INFO, format='[%(asctime)s] [%(levelname)s] %(message)s')
+logging.getLogger("requests").setLevel(logging.WARNING)
 
 # LaSpina - added file locking mechanism to prevent multiple scripts from running
 class FileLock:
@@ -35,6 +41,39 @@ class FileLock:
                     if waited >= maximum_wait:
                         return False
 
+class DbLock:
+    def __init__(self, mongo_uri, maximum_wait=120):
+        self.mongo_uri = mongo_uri
+        if mongo_uri is None:
+            return
+        self.client = pymongo.MongoClient(mongo_uri)
+        db = self.client["admin"]
+        ping = db.command("ping")
+        self.db = self.client["opsManagerLock"]
+        self.maximum_wait = maximum_wait
+
+    def unlock(self):
+        if self.mongo_uri is None:
+            return
+        self.db.opsManagerLock.delete_one({'_id': 'lock'})
+        logging.info("DbLock lock released")
+
+    def lock(self):
+        if self.mongo_uri is None:
+            return
+        waited = 0
+        while True:
+            try:
+                result = self.db.opsManagerLock.insert({'_id': 'lock', "date": datetime.datetime.utcnow()})
+                logging.info("DbLock lock acquired")
+                return True
+            except pymongo.errors.DuplicateKeyError as e:
+                logging.info("DbLock waiting for lock")
+                time.sleep(5)
+                waited += 5
+                if waited >= self.maximum_wait:
+                    return False
+
 def fixNoTablescan(config):
     for process in config.get('processes', None):
         notable_opt = process.get("args2_6", {}).get("setParameter", {}).get("notablescan")
@@ -51,6 +90,12 @@ def getAutomationConfig():
     new_config = copy.deepcopy(response.json())
     fixNoTablescan(new_config)
     return new_config
+
+def get_automation_status():
+    response = requests.get(automationStatusEndpoint
+            ,auth=HTTPDigestAuth(args.username,args.apiKey), verify=False)
+    response.raise_for_status()
+    return response.json()
 
 def printAutomationConfig():
     config = getAutomationConfig()
@@ -84,7 +129,7 @@ def wait_for_goal_state():
     count = 0
     while True:
         continue_to_wait = False
-        status = self.get_automation_status()
+        status = get_automation_status()
         goal_version = status['goalVersion']
 
         for process in status['processes']:
@@ -120,6 +165,7 @@ def __startStopHost(disabledState):
 
     if modifiedCount > 0:
         __post_automation_config(new_config)
+        wait_for_goal_state()
 
 # TODO - improve this logic to handle waiting for the connection
 #        if not disabledState:
@@ -206,6 +252,9 @@ optionsParser.add_argument("--rsPassword"
 optionsParser.add_argument("--waitForLock"
         ,help='Number of seconds to wait for a process lock - default 10 '
         ,required=False)
+optionsParser.add_argument("--lock_mongo_uri"
+        ,help='Mongo URI for where to store lock document'
+        ,required=False)
 
 
 args = parser.parse_args()
@@ -213,12 +262,16 @@ args = parser.parse_args()
 if args.action is None:
     parser.parse_args(['-h'])
 
-fl = FileLock()
-if not fl.lock(int(args.waitForLock) if args.waitForLock is not None else 10):
-    print ("Could not obtain process lock - exiting")
-    sys.exit(1)
+# fl = FileLock()
+# if not fl.lock(int(args.waitForLock) if args.waitForLock is not None else 10):
+#     print ("Could not obtain process lock - exiting")
+#     sys.exit(1)
+
+dbLock = DbLock(mongo_uri=args.lock_mongo_uri)
+dbLock.lock()
 
 automationConfigEndpoint = args.host +"/api/public/v1.0/groups/" + args.group +"/automationConfig"
+automationStatusEndpoint = args.host +"/api/public/v1.0/groups/" + args.group +"/automationStatus"
 
 hostPort = args.hostPort.split(':')
 if len(hostPort) != 2:
@@ -233,4 +286,5 @@ port = hostPort[1]
 # e.g. --disableAlertConfigs argument will call disableAlerts()
 args.action()
 
-fl.unlock()
+#fl.unlock()
+dbLock.unlock()
