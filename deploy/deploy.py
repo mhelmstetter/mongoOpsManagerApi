@@ -21,8 +21,22 @@ processTemplate = {
     "name": "",
     "numCores": 0,
     "processType": "mongod",
-    "version": "",
+    "featureCompatibilityVersion": "3.4",
+    "version": "3.4.14",
     "args2_6": {
+        "net": {
+            "port": 27017
+        },
+        "storage": {
+            "dbPath": "/data"
+        },
+        "systemLog": {
+            "destination": "file",
+            "path": "/data/mongodb.log"
+        },
+        "replication": {
+            "replSetName": ""
+        }
     }
 }
 

@@ -102,6 +102,11 @@ def printAutomationConfig():
     configStr = json.dumps(config, indent=4)
     print(configStr)
 
+def printAutomationStatus():
+    status = get_automation_status()
+    configStr = json.dumps(status, indent=4)
+    print(configStr)
+
 
 #
 # Wait for a given member to become either
@@ -237,6 +242,9 @@ actionsParser.add_argument("--startHost",dest='action', action='store_const'
 actionsParser.add_argument("--printAutomationConfig",dest='action', action='store_const'
         ,const=printAutomationConfig
         ,help='Get Automation Config')
+actionsParser.add_argument("--printAutomationStatus",dest='action', action='store_const'
+        ,const=printAutomationStatus
+        ,help='Get Automation Status')
 
 
 optionsParser = parser.add_argument_group('options')
