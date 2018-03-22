@@ -59,7 +59,7 @@ Remove Replica Member
 python deploy.py --host http://opsmanager.mydomain.com:8080 \
 --apiKey fa052147-e81b-488b-8eea-e3881388cd9a --group 5ab18e0b9590dd70a0bb58e7 \
 --username user@mydomain.com --rsName rs1 \
---hostPort ip-172-31-16-73.us-west-2.compute.internal:27017 \
+--hostPort host1.mydomain.com:27017 \
 --removeReplicaMember 
 ```
 
@@ -69,6 +69,27 @@ Add Replica Member
 python deploy.py --host http://opsmanager.mydomain.com:8080 \
 --apiKey fa052147-e81b-488b-8eea-e3881388cd9a --group 5ab18e0b9590dd70a0bb58e7 \
 --username user@mydomain.com --rsName rs1 \
---hostPort ip-172-31-16-73.us-west-2.compute.internal:27017 \
+--hostPort host1.mydomain.com:27017 \
 --rsTemplate rsTemplate.json --addReplicaMember 
 ```
+
+Stop mongod on Host
+-------------------
+```
+python stopStart.py -host http://opsmanager.mydomain.com:8080 \
+--apiKey fa052147-e81b-488b-8eea-e3881388cd9a --group 5ab18e0b9590dd70a0bb58e7 \
+--username user@mydomain.com \
+--hostPort host1.mydomain.com:27017 \
+--stopHost 
+```
+
+Start mongod on Host
+-------------------
+```
+python stopStart.py -host http://opsmanager.mydomain.com:8080 \
+--apiKey fa052147-e81b-488b-8eea-e3881388cd9a --group 5ab18e0b9590dd70a0bb58e7 \
+--username user@mydomain.com \
+--hostPort host1.mydomain.com:27017 \
+--startHost 
+```
+
